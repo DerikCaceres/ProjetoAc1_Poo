@@ -40,4 +40,9 @@ public class servicecliente {
         }
         return DtoList;
     }
+    public void apagarId(Long id) {
+    }
+    public Dtocliente atualizar(Long id, Dtocliente updateDto) {
+        return null;
+    }
 }

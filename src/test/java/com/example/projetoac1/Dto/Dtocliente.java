@@ -7,32 +7,30 @@ public class Dtocliente {
     private String name;
     private long id;
     
-    public Dtocliente(long nid, String nname) {
-        setName(nname);
-        setId(nid);
-    }
     
-    public Dtocliente(cliente cliente) {
-        setName(cliente.getName());
-        setId(cliente.getId());
+    public Dtocliente(){
     }
 
-    public String getName()
-    {
-        return name;
+    public Dtocliente(long id, String name) {
+
+        setId(id);
+        setnome(name);
     }
-    public void setName(String name){
-        this.name = name;
+    public Dtocliente(cliente cli) {
+        setId(cli.getId());
+        setnome(cli.getName());
     }
 
-    public long getId()
-    {
+    public long getId() {
         return id;
     }
-
-    public void setId(long id)
-    {
+    public void setId(long id) {
         this.id = id;
     }
-    
+    public String getnome() {
+        return name;
+    }
+    public void setnome(String name) {
+        this.name = name;
+    }
 }
