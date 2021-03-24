@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.example.projetoac1.Dto.Dtoinsert;
+
 
 
 @Entity
@@ -25,6 +27,12 @@ public class cliente implements Serializable {
     private String lugar;
     private String email;
     
+    public cliente() {   
+    }
+    public cliente(Dtoinsert Dtoinsert) {
+        this.name = Dtoinsert.getnome();
+        this.lugar = Dtoinsert.getLugar();
+    }
     
     public Long getId() {
         return id;
@@ -60,7 +68,7 @@ public class cliente implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + (int)(id ^ (id >>> 32));
         return result;
     }
     @Override

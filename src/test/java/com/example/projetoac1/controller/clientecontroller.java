@@ -3,6 +3,7 @@ package com.example.projetoac1.controller;
 import java.util.List;
 
 import com.example.projetoac1.Dto.Dtocliente;
+import com.example.projetoac1.Dto.Dtoinsert;
 import com.example.projetoac1.service.servicecliente;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class clientecontroller
     
     }
     @PostMapping
-    public ResponseEntity<Dtocliente> insert(@RequestBody DtoclienteInsert insertDto){
+    public ResponseEntity<Dtocliente> insert(@RequestBody Dtoinsert insertDto){
         Dtocliente dto = srvc.insert(insertDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
