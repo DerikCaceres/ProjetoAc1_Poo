@@ -24,13 +24,13 @@ public class servicecliente {
     private clienterepositorio repository;
 
 
-    public List<Dtocliente> getClienteCadastro(){
+    public List<Dtocliente> getcliente(){
         
         List <cliente> list = repository.findAll();
         return toDTOlist(list);
     } 
 
-    public Dtocliente getClienteById(long id){
+    public Dtocliente getclientebyId(long id){
 
         Optional <cliente> op = repository.findById(id);
         cliente client = op.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Nao cadastrado no sistema."));

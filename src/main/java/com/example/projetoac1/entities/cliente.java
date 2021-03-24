@@ -46,17 +46,18 @@ public class cliente implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public String getDescricao() {
-        return descricao;
-    }
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+  
     public String getLugar() {
         return lugar;
     }
     public void setLugar(String lugar) {
         this.lugar = lugar;
+    }
+    public String getDescricao() {
+        return descricao;
+    }
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
     public String getEmail() {
         return email;
