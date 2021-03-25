@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
+
 import com.example.projetoac1.Dto.Dtocliente;
 import com.example.projetoac1.Dto.Dtoinsert;
 import com.example.projetoac1.entities.cliente;
@@ -13,6 +14,9 @@ import com.example.projetoac1.repositorio.clienterepositorio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -24,10 +28,10 @@ public class servicecliente {
     private clienterepositorio repository;
 
 
-    public List<Dtocliente> getcliente(){
+    public Page<Dtocliente> getcliente(PageRequest pageRequest, String nome){
         
-        List <cliente> list = repository.findAll();
-        return toDTOlist(list);
+        Page <cliente> list = repository.findAll(pageRequest, nome );
+        return list.map(c -> new Dtocliente(c));
     } 
 
     public Dtocliente getclientebyId(long id){
