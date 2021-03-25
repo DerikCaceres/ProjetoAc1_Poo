@@ -1,7 +1,6 @@
 package com.example.projetoac1.service;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
@@ -16,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -30,7 +29,7 @@ public class servicecliente {
 
     public Page<Dtocliente> getcliente(PageRequest pageRequest, String nome){
         
-        Page <cliente> list = repository.findAll(pageRequest, nome );
+        Page <cliente> list = repository.find(pageRequest, nome );
         return list.map(c -> new Dtocliente(c));
     } 
 
@@ -71,15 +70,6 @@ public class servicecliente {
     }
     
 
-    private List<Dtocliente> toDTOlist(List<cliente>list){
-        List<Dtocliente> listDto = new ArrayList<>();
 
-        for(cliente c : list){
-            listDto.add(new Dtocliente(c.getId(),c.getName()));
-        }
-
-
-        return listDto;
-    }
 
 }
