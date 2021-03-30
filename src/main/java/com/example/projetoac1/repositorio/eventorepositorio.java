@@ -2,7 +2,7 @@ package com.example.projetoac1.repositorio;
 
 
 
-import com.example.projetoac1.entities.cliente;
+import com.example.projetoac1.entities.evento;
 
 
 import org.springframework.data.domain.Page;
@@ -13,10 +13,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 
-public interface clienterepositorio extends JpaRepository<cliente, Long>{
+public interface eventorepositorio extends JpaRepository<evento, Long>{
     @Query("SELECT c FROM cliente " )
 
-    public Page<cliente>find(Pageable pageResquest,String name);
+    public Page<evento>find(Pageable pageResquest,String name);
   
 }
 

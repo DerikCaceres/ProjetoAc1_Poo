@@ -1,6 +1,8 @@
 package com.example.projetoac1.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +18,7 @@ import com.example.projetoac1.Dto.Dtoinsert;
 @Table(name = "cliente_tabela")
 
 
-public class cliente implements Serializable {
+public class evento implements Serializable {
     
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +29,9 @@ public class cliente implements Serializable {
     private String lugar;
     private String email;
     
-    public cliente() {   
+    public evento() {   
     }
-    public cliente(Dtoinsert Dtoinsert) {
+    public evento(Dtoinsert Dtoinsert) {
         this.name = Dtoinsert.getnome();
         this.lugar = Dtoinsert.getLugar();
     }
@@ -80,13 +82,28 @@ public class cliente implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        cliente other = (cliente) obj;
+        evento other = (evento) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
         } else if (!id.equals(other.id))
             return false;
         return true;
+    }
+    public String getLocal() {
+        return null;
+    }
+    public LocalDate getDatainicio() {
+        return null;
+    }
+    public LocalDate getDatafinal() {
+        return null;
+    }
+    public LocalTime getTempoinicio() {
+        return null;
+    }
+    public LocalTime getTempofinal() {
+        return null;
     }
    
         
