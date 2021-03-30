@@ -61,7 +61,7 @@ public class serviceevento {
 
         try{
             evento entity = repository.getOne(id);
-            entity.setName(updateDto.getnome());
+            entity.setName(updateDto.getName());
             entity=repository.save(entity);
             return new Dtoevento(entity);
         }catch(EntityNotFoundException e){

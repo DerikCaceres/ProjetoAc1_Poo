@@ -9,7 +9,7 @@ public class Dtoevento {
 
     private Long id;
     private String name;
-    private String description;
+    private String descricao;
     private String local;
 
     private LocalDate datainicio;
@@ -37,7 +37,7 @@ public class Dtoevento {
 
     public Dtoevento(evento ev) {
         this.name = ev.getName();
-        this.description = ev.getDescricao();
+        this.descricao = ev.getDescricao();
         this.local = ev.getLocal();
         this.datainicio = ev.getDatainicio();
         this.datafinal = ev.getDatafinal();
@@ -59,11 +59,11 @@ public class Dtoevento {
     public void setName(String name) {
         this.name = name;
     }
-    public String getDescription() {
-        return description;
+    public String getDescricao() {
+        return descricao;
     }
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescricao(String descricao){
+        this.descricao = descricao;
     }
     public String getLocal() {
         return local;

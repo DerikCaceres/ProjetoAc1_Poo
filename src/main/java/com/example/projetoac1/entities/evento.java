@@ -15,7 +15,7 @@ import com.example.projetoac1.Dto.Dtoinsert;
 
 
 @Entity
-@Table(name = "cliente_tabela")
+@Table(name = "evento_tabela")
 
 
 public class evento implements Serializable {
@@ -26,16 +26,31 @@ public class evento implements Serializable {
     private Long id;
     private String name;
     private String descricao;
-    private String lugar;
+    private String local;
+
+    private LocalDate datainicio;
+    private LocalDate datafinal;
+    private LocalTime tempoinicio;
+    private LocalTime tempofinal;
+
     private String email;
-    
     public evento() {   
     }
-    public evento(Dtoinsert Dtoinsert) {
-        this.name = Dtoinsert.getnome();
-        this.lugar = Dtoinsert.getLugar();
+    public evento(Dtoinsert dto) {
+       
+            this.name = dto.getName();
+            this.descricao = dto.getDescricao();
+            this.local = dto.getLocal();
+            this.datainicio = dto.getDatainicio();
+            this.datafinal = dto.getDatafinal();
+            this.tempoinicio = dto.getTempoinicio();
+            this.tempofinal = dto.getTempofinal();
+            this.email = dto.getEmail();
+        
     }
-    
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
     public Long getId() {
         return id;
     }
@@ -48,18 +63,41 @@ public class evento implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-  
-    public String getLugar() {
-        return lugar;
-    }
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
-    }
     public String getDescricao() {
         return descricao;
     }
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+    public String getLocal() {
+        return local;
+    }
+    public void setLocal(String local) {
+        this.local = local;
+    }
+    public LocalDate getDatainicio() {
+        return datainicio;
+    }
+    public void setDatainicio(LocalDate datainicio) {
+        this.datainicio = datainicio;
+    }
+    public LocalDate getDatafinal() {
+        return datafinal;
+    }
+    public void setDatafinal(LocalDate datafinal) {
+        this.datafinal = datafinal;
+    }
+    public LocalTime getTempoinicio() {
+        return tempoinicio;
+    }
+    public void setTempoinicio(LocalTime tempoinicio) {
+        this.tempoinicio = tempoinicio;
+    }
+    public LocalTime getTempofinal() {
+        return tempofinal;
+    }
+    public void setTempofinal(LocalTime tempofinal) {
+        this.tempofinal = tempofinal;
     }
     public String getEmail() {
         return email;
@@ -67,6 +105,8 @@ public class evento implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -89,23 +129,6 @@ public class evento implements Serializable {
         } else if (!id.equals(other.id))
             return false;
         return true;
-    }
-    public String getLocal() {
-        return null;
-    }
-    public LocalDate getDatainicio() {
-        return null;
-    }
-    public LocalDate getDatafinal() {
-        return null;
-    }
-    public LocalTime getTempoinicio() {
-        return null;
-    }
-    public LocalTime getTempofinal() {
-        return null;
-    }
-   
-        
     
+}
 }
