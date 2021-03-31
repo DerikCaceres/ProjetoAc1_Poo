@@ -1,10 +1,11 @@
 package com.example.projetoac1.controller;
 
 import java.net.URI;
-
+import java.time.LocalDate;
 
 import com.example.projetoac1.Dto.Dtoevento;
 import com.example.projetoac1.Dto.Dtoinsert;
+import com.example.projetoac1.Dto.Dtoup;
 import com.example.projetoac1.service.serviceevento;
 
 import org.springframework.data.domain.Sort.Direction;
@@ -32,24 +33,28 @@ public class eventocontroller
     private serviceevento srvc;
 
     @GetMapping
-    public ResponseEntity<Page<Dtoevento>> getcliente(
+    public ResponseEntity<Page<Dtoevento>> getevento(
     
     @RequestParam(value = "page",         defaultValue = "0") Integer page,
     @RequestParam(value = "linesPerPage", defaultValue = "6") Integer linesPerPage,
     @RequestParam(value = "direction",    defaultValue = "ASC") String direction,
     @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy,
-    @RequestParam(value = "name",         defaultValue = "") String nome )
+    @RequestParam(value = "name",         defaultValue = "") String name,
+    @RequestParam(value = "local",        defaultValue = "") String local,
+    @RequestParam(value = "datainicio",   defaultValue = "") LocalDate datainicio,
+    @RequestParam(value = "descricao",  defaultValue = "") String descricao)
+   
     {
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
-        Page <Dtoevento> list = srvc.getcliente(pageRequest, nome);
+        Page <Dtoevento> list = srvc.getevento(pageRequest, name,local,datainicio,descricao);
         return ResponseEntity.ok().body(list);
 
     }
     
         @GetMapping("{id}")
-        public ResponseEntity<Dtoevento>getclienteById(@PathVariable long id)
+        public ResponseEntity<Dtoevento>geteventoById(@PathVariable long id)
     {
-        Dtoevento dto = srvc.getclientebyId(id);
+        Dtoevento dto = srvc.geteventobyId(id);
         return ResponseEntity.ok().body(dto);    
     
     }
@@ -67,8 +72,9 @@ public class eventocontroller
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Dtoevento> update(@RequestBody Dtoevento updateDto, @PathVariable Long id){
-    Dtoevento dto = srvc.atualizar(id,updateDto);
-    return ResponseEntity.ok().body(dto);}
+    public ResponseEntity<Dtoevento> update(@RequestBody Dtoup updto, @PathVariable Long id){
+    Dtoevento dto = srvc.update(id,updto);
+    return ResponseEntity.ok().body(dto);
+}
     
 }

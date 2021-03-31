@@ -23,27 +23,28 @@ public class Dtoevento {
 
     }
     
-    public Dtoevento(String name, String local, LocalDate datainicio, LocalDate datafinal, LocalTime tempoinicio,  LocalTime  tempofinal, String email){
+    public Dtoevento(String name, String descricao,String local, LocalDate datainicio, LocalDate datafinal, LocalTime tempoinicio,  LocalTime  tempofinal, String email){
         
        
-        this.name = name;
-        this.local = local;
-        this.datainicio = datainicio;
-        this.datafinal = datafinal;
-        this.tempoinicio = tempoinicio;
-        this.tempofinal = tempofinal;
-        this.email = email;
+        setName(name);
+        setDescricao(descricao);
+        setLocal(local);
+        setDatainicio(datainicio);
+        setDatafinal(datafinal);
+        setTempoinicio(tempoinicio);
+        setTempofinal(tempofinal);
+        setEmail(email);
     }
 
-    public Dtoevento(evento ev) {
-        this.name = ev.getName();
-        this.descricao = ev.getDescricao();
-        this.local = ev.getLocal();
-        this.datainicio = ev.getDatainicio();
-        this.datafinal = ev.getDatafinal();
-        this.tempoinicio = ev.getTempoinicio();
-        this.tempofinal = ev.getTempofinal();
-        this.email = ev.getEmail();
+    public Dtoevento(evento eve) {
+        this.name = eve.getName();
+        this.descricao = eve.getDescricao();
+        this.local = eve.getLocal();
+        this.datainicio = eve.getDatainicio();
+        this.datafinal = eve.getDatafinal();
+        this.tempoinicio = eve.getTempoinicio();
+        this.tempofinal = eve.getTempofinal();
+        this.email = eve.getEmail();
     }
 
     public Long getId() {

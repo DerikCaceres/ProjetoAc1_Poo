@@ -2,6 +2,8 @@ package com.example.projetoac1.repositorio;
 
 
 
+import java.time.LocalDate;
+
 import com.example.projetoac1.entities.evento;
 
 
@@ -16,7 +18,7 @@ import org.springframework.stereotype.Repository;
 public interface eventorepositorio extends JpaRepository<evento, Long>{
     @Query("SELECT c FROM cliente " )
 
-    public Page<evento>find(Pageable pageResquest,String name);
+    public Page<evento>find(Pageable pageResquest,String name,String local, LocalDate datainicio, String descricao);
   
 }
 
