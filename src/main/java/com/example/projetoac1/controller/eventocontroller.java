@@ -41,7 +41,7 @@ public class eventocontroller
     @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy,
     @RequestParam(value = "name",         defaultValue = "") String name,
     @RequestParam(value = "local",        defaultValue = "") String local,
-    @RequestParam(value = "datainicio",   defaultValue = "") LocalDate datainicio,
+    @RequestParam(value = "datainicio",   defaultValue = "14/06/1800") LocalDate datainicio,
     @RequestParam(value = "descricao",  defaultValue = "") String descricao)
    
     {

@@ -2,8 +2,7 @@ package com.example.projetoac1.service;
 
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
@@ -43,17 +42,6 @@ public class serviceevento {
         evento event = op.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Nao cadastrado no sistema."));
 
         return new Dtoevento(event);
-    }
-    public List<Dtoevento> toDTOList(List<evento> list) {
-
-        List<Dtoevento> listaDto = new ArrayList<>();
-
-        for (evento eve : list) {
-            Dtoevento dto = new Dtoevento(eve.getName(), eve.getDescricao(), eve.getLocal(), eve.getDatainicio(),
-                    eve.getDatafinal(), eve.getTempoinicio(), eve.getTempofinal(), eve.getEmail());  
-            listaDto.add(dto);
-        }
-        return listaDto;
     }
 
     public Dtoevento insert(Dtoinsert insertDto){
