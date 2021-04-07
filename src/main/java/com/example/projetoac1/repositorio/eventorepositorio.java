@@ -16,9 +16,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 
 public interface eventorepositorio extends JpaRepository<evento, Long>{
-    @Query("SELECT ev FROM Event ev " + " WHERE " + "ev.name like concat('%',:name,'%') and " + "ev.local like concat('%',:local,'%') and " + "ev.descricao like concat('%',:descricao,'%') and ev.datainicio > :datainicio" )
+    @Query("SELECT e FROM Event e " + " WHERE " + "e.name like concat('%',:name,'%') and " + "e.lugar like concat('%',:lugar,'%') and " + "e.descricao like concat('%',:descricao,'%') and e.startDate > :startDate")
 
-    public Page<evento>find(Pageable pageResquest,String name,String local, LocalDate datainicio, String descricao);
+    public Page<evento> find(Pageable pageRequest, String name, String local,LocalDate datainicio, String descricao);
   
 }
 

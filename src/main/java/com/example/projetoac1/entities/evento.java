@@ -48,9 +48,7 @@ public class evento implements Serializable {
             this.email = dto.getEmail();
         
     }
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
+
     public Long getId() {
         return id;
     }

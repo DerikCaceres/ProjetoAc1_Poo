@@ -30,9 +30,9 @@ public class serviceevento {
     private eventorepositorio repository;
 
 
-    public Page<Dtoevento> getcliente(PageRequest pageRequest, String name,String place, LocalDate datainicio, String descricao){
+    public Page<Dtoevento> getcliente(PageRequest pageRequest, String name,String local, LocalDate datainicio, String descricao){
         
-        Page <evento> list = repository.find(pageRequest, name, place, datainicio, descricao );
+        Page <evento> list = repository.find(pageRequest, name, local, datainicio, descricao );
         return list.map(event -> new Dtoevento(event));
     } 
 

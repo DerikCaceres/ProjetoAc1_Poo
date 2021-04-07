@@ -38,6 +38,7 @@ public class Dtoevento {
     }
 
     public Dtoevento(evento eve) {
+        this.id = eve.getId();
         this.name = eve.getName();
         this.descricao = eve.getDescricao();
         this.local = eve.getLocal();
