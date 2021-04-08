@@ -8,11 +8,11 @@ import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 
 
-import com.example.projetoac1.Dto.Dtoevento;
+import com.example.projetoac1.Dto.DtoEvento;
 import com.example.projetoac1.Dto.Dtoinsert;
 import com.example.projetoac1.Dto.Dtoup;
-import com.example.projetoac1.entities.evento;
-import com.example.projetoac1.repositorio.eventorepositorio;
+import com.example.projetoac1.entities.Evento;
+import com.example.projetoac1.repositorio.Eventorepositorio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -24,35 +24,35 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
-public class serviceevento {
+public class ServiceEvento {
     
     @Autowired
-    private eventorepositorio repository;
+    private Eventorepositorio repository;
 
 
-    public Page<Dtoevento> getcliente(PageRequest pageRequest, String name,String local, LocalDate datainicio, String descricao){
+    public Page<DtoEvento> getEvento(PageRequest pageRequest,String name, String local,LocalDate datainicio, String descricao){
         
-        Page <evento> list = repository.find(pageRequest, name, local, datainicio, descricao );
-        return list.map(event -> new Dtoevento(event));
+        Page <Evento> list = repository.find(pageRequest,name,local,datainicio,descricao);
+        return list.map(e -> new DtoEvento(e));
     } 
 
-    public Dtoevento getclientebyId(long id){
+    public DtoEvento getEventobyId(long id){
 
-        Optional <evento> op = repository.findById(id);
-        evento event = op.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Nao cadastrado no sistema."));
+        Optional <Evento> op = repository.findById(id);
+        Evento event = op.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Nao cadastrado no sistema."));
 
-        return new Dtoevento(event);
+        return new DtoEvento(event);
     }
 
-    public Dtoevento insert(Dtoinsert insertDto){
+    public DtoEvento insert(Dtoinsert insertDto){
 
-        evento entity = new evento(insertDto);
+        Evento entity = new Evento(insertDto);
          entity = repository.save(entity);
-         return new Dtoevento(entity);
+         return new DtoEvento(entity);
     }
-    public Dtoevento update(Long id, Dtoup updto){
+    public DtoEvento update(Long id, Dtoup updto){
         try{
-            evento entity = repository.getOne(id);
+            Evento entity = repository.getOne(id);
             entity.setName(updto.getName());
             entity.setDescricao(updto.getDescricao());
             entity.setLocal(updto.getLocal());
@@ -63,10 +63,10 @@ public class serviceevento {
             entity.setEmail(updto.getEmail());
             entity = repository.save(entity);
     
-            return new Dtoevento(entity);
+            return new DtoEvento(entity);
         }
         catch(EntityNotFoundException ex){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente nao cadastrado");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Evento nao cadastrado");
         }
     }
 
@@ -78,26 +78,7 @@ public class serviceevento {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"ID já apagado ou não encontrado");
         }
     }
-
-    public Page<Dtoevento> getevento(PageRequest pageRequest, String name, String local,LocalDate datainicio, String descricao){
-        Page<evento> list = repository.find(pageRequest,name,local,datainicio,descricao);
-        return list.map(e -> new Dtoevento(e) );
-    }
-
-    public Dtoevento geteventobyId(long id) {
-        Optional<evento> opcao = repository.findById(id);
-        evento evento = opcao.orElseThrow( () ->  new ResponseStatusException(HttpStatus.NOT_FOUND, "evento nao encontrado"));
-        return new Dtoevento(evento);
-     
-    }
-
+ 
     
-
-    
-
-   
-    
-
-
 
 }

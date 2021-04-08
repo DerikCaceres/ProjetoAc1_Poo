@@ -3,10 +3,10 @@ package com.example.projetoac1.controller;
 import java.net.URI;
 import java.time.LocalDate;
 
-import com.example.projetoac1.Dto.Dtoevento;
+import com.example.projetoac1.Dto.DtoEvento;
 import com.example.projetoac1.Dto.Dtoinsert;
 import com.example.projetoac1.Dto.Dtoup;
-import com.example.projetoac1.service.serviceevento;
+import com.example.projetoac1.service.ServiceEvento;
 
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +25,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping("/evento")
-public class eventocontroller 
+@RequestMapping("/Evento")
+public class Eventocontroller 
 {
 
     @Autowired
-    private serviceevento srvc;
+    private ServiceEvento srvc;
 
     @GetMapping
-    public ResponseEntity<Page<Dtoevento>> getevento(
+    public ResponseEntity<Page<DtoEvento>> getEvento(
     
     @RequestParam(value = "page",         defaultValue = "0") Integer page,
     @RequestParam(value = "linesPerPage", defaultValue = "6") Integer linesPerPage,
@@ -46,21 +46,21 @@ public class eventocontroller
    
     {
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
-        Page <Dtoevento> list = srvc.getevento(pageRequest, name,local,datainicio,descricao);
+        Page <DtoEvento> list = srvc.getEvento(pageRequest,name,local,datainicio,descricao);
         return ResponseEntity.ok().body(list);
 
     }
     
         @GetMapping("{id}")
-        public ResponseEntity<Dtoevento>geteventoById(@PathVariable long id)
+        public ResponseEntity<DtoEvento>getEventoById(@PathVariable long id)
     {
-        Dtoevento dto = srvc.geteventobyId(id);
+        DtoEvento dto = srvc.getEventobyId(id);
         return ResponseEntity.ok().body(dto);    
     
     }
     @PostMapping
-    public ResponseEntity<Dtoevento> insert(@RequestBody Dtoinsert insertDto){
-        Dtoevento dto = srvc.insert(insertDto);
+    public ResponseEntity<DtoEvento> insert(@RequestBody Dtoinsert insertDto){
+        DtoEvento dto = srvc.insert(insertDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
@@ -72,8 +72,8 @@ public class eventocontroller
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Dtoevento> update(@RequestBody Dtoup updto, @PathVariable Long id){
-    Dtoevento dto = srvc.update(id,updto);
+    public ResponseEntity<DtoEvento> update(@RequestBody Dtoup updto, @PathVariable Long id){
+    DtoEvento dto = srvc.update(id,updto);
     return ResponseEntity.ok().body(dto);
 }
     

@@ -3,9 +3,9 @@ package com.example.projetoac1.Dto;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import com.example.projetoac1.entities.evento;
+import com.example.projetoac1.entities.Evento;
 
-public class Dtoevento {
+public class DtoEvento {
 
     private Long id;
     private String name;
@@ -19,11 +19,11 @@ public class Dtoevento {
 
     private String email;
 
-    public Dtoevento(){ 
+    public DtoEvento(){ 
 
     }
     
-    public Dtoevento(Long id,String name, String descricao,String local, LocalDate datainicio, LocalDate datafinal, LocalTime tempoinicio,  LocalTime  tempofinal, String email){
+    public DtoEvento(Long id,String name, String descricao,String local, LocalDate datainicio, LocalDate datafinal, LocalTime tempoinicio,  LocalTime  tempofinal, String email){
         
        
         this.id = id;
@@ -37,7 +37,7 @@ public class Dtoevento {
         this.email = email;
     }
 
-    public Dtoevento(evento eve) {
+    public DtoEvento(Evento eve) {
         this.id = eve.getId();
         this.name = eve.getName();
         this.descricao = eve.getDescricao();

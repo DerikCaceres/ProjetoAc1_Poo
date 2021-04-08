@@ -15,10 +15,10 @@ import com.example.projetoac1.Dto.Dtoinsert;
 
 
 @Entity
-@Table(name = "evento_tabela")
+@Table(name = "Evento_tabela")
 
 
-public class evento implements Serializable {
+public class Evento implements Serializable {
     
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,9 +34,9 @@ public class evento implements Serializable {
     private LocalTime tempofinal;
 
     private String email;
-    public evento() {   
+    public Evento() {   
     }
-    public evento(Dtoinsert dto) {
+    public Evento(Dtoinsert dto) {
        
             this.name = dto.getName();
             this.descricao = dto.getDescricao();
@@ -120,7 +120,7 @@ public class evento implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        evento other = (evento) obj;
+        Evento other = (Evento) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
