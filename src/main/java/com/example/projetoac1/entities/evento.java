@@ -16,14 +16,12 @@ import com.example.projetoac1.Dto.Dtoinsert;
 
 @Entity
 @Table(name = "Evento_tabela")
-
-
 public class Evento implements Serializable {
-    
+    private static final long serialVersionUID = 1L;
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private static final long serialVersionUID = 1L;
     private Long id;
+    
     private String name;
     private String descricao;
     private String local;

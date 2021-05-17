@@ -26,7 +26,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping("/Evento")
-public class Eventocontroller 
+public class Eventocontroller
 {
 
     @Autowired
