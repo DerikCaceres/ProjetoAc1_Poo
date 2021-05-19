@@ -1,5 +1,7 @@
 package com.example.projetoac1.dtoAdm;
 
+import com.example.projetoac1.entities.AdminEntity;
+
 public class DtoAdm {
 
 
@@ -13,6 +15,8 @@ public class DtoAdm {
 
     public DtoAdm() {
     }
+    public DtoAdm(DtoAdm adm) {
+    }
 
     public DtoAdm(long id, String name, String telefone, String email) {
         this.id = id;
@@ -22,6 +26,8 @@ public class DtoAdm {
     }
     
     
+    public DtoAdm(AdminEntity adm) {
+    }
     public long getId() {
         return id;
     }

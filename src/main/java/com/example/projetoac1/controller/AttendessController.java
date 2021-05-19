@@ -1,7 +1,13 @@
 package com.example.projetoac1.controller;
 
+
+
+import java.net.URI;
+
 import com.example.projetoac1.dtoAdm.DtoAdm;
-import com.example.projetoac1.dtoAdm.DtoAdmInsert;
+import com.example.projetoac1.dtoAttendess.DtoAttendess;
+import com.example.projetoac1.dtoAttendess.DtoAttendessInsert;
+import com.example.projetoac1.service.AttenService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,7 +33,7 @@ public class AttendessController {
 
 
     @GetMapping
-    public ResponseEntity<Page<DtoAdm>>getAdmin(
+    public ResponseEntity<Page<DtoAttendess>>getAdmin(
 
         @RequestParam(value = "page",         defaultValue = "0") Integer page,//?page=1
         @RequestParam(value = "linesPerPage", defaultValue = "6") Integer linesPerPage,//?page=1&perpage=4
@@ -36,21 +42,21 @@ public class AttendessController {
     ){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
 
-        Page <DtoAdm> list = adminService.getAdmin(pageRequest);
+        Page <DtoAttendess> list =AttenService.getAdmin(pageRequest);
 
         return ResponseEntity.ok().body(list);      
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DtoAdm> getAdminById(@PathVariable long id) {
-        DtoAdm admin = adminService.getAdminByCodigo(id);
+    public ResponseEntity<DtoAttendess> getAdminById(@PathVariable long id) {
+        DtoAttendess admin = AttenService.getAdminByCodigo(id);
       return ResponseEntity.ok().body(admin);  
     }
 
   
     @PostMapping
-    public ResponseEntity<DtoAdm> insert(@RequestBody DtoAdmInsert insertDto){
-        DtoAdm dto = adminService.insert(insertDto);
+    public ResponseEntity<DtoAttendess> insert(@RequestBody DtoAttendessInsert insertDto){
+        DtoAdm dto = AttenService.insert(insertDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
@@ -59,13 +65,13 @@ public class AttendessController {
 
     @DeleteMapping("/{codigo}")
     public ResponseEntity<Void> remove(@PathVariable long id){
-      adminService.Remove(id);
+      AttenService.Remove(id);
       return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<DtoAdm> Update(@RequestBody DtoAdm updateDto, @PathVariable Long id){
-        DtoAdm dto = adminService.atualizar(id,updateDto);
+    public ResponseEntity<DtoAttendess> Update(@RequestBody DtoAdm updateDto, @PathVariable Long id){
+        DtoAdm dto = AttenService.atualizar(id,updateDto);
         return ResponseEntity.ok().body(dto);
     }
 }

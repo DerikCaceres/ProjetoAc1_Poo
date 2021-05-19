@@ -4,10 +4,11 @@ import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
+
 import com.example.projetoac1.dtoAdm.DtoAdm;
 import com.example.projetoac1.dtoAdm.DtoAdmInsert;
 import com.example.projetoac1.entities.AdminEntity;
-import com.example.projetoac1.repositorio.AdmRespository;
+import com.example.projetoac1.repositorio.AdmRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -19,15 +20,15 @@ import org.springframework.web.server.ResponseStatusException;
 public class AdmService {
    
 
-    private AdmRespository repositoryAdmin;
+    private AdmRepository repositoryAdmin;
 
 
     @Autowired
-    private AdmRespository repository;
+    private AdmRepository repository;
 
         public Page<DtoAdm> getAdmin(PageRequest pageRequest,String name,String telefone,String email){
         
-        Page <DtoAdm> list = repository.find(pageRequest,name,telefone,email);
+        Page <DtoAdm> list = repositoryAdmin.find(pageRequest,name,telefone,email);
         return list.map(adm -> new DtoAdm(adm));
     } 
 
@@ -35,9 +36,9 @@ public class AdmService {
     public DtoAdm getAdminByCodigo(long id) {
 
         Optional <AdminEntity> op = repositoryAdmin.findById(id);
-        AdminEntity admin = op.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Cliente não encontrado no sistema!!!"));
+        AdminEntity adm = op.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Cliente não encontrado no sistema!!!"));
 
-        return new DtoAdm(admin);
+        return new DtoAdm(adm);
     }
 
     

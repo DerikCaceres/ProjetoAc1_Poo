@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
+import com.example.projetoac1.dtoAdm.DtoAdmInsert;
+
 
 @Entity
 @PrimaryKeyJoinColumn(name="USERBASE_ID")
@@ -33,6 +35,10 @@ public class AdminEntity extends BaseUser{
         super(id,name,email);
         this.listaEventos = listaEventos;
         this.telefone = telefone;
+    }
+
+
+    public AdminEntity(DtoAdmInsert insertDto) {
     }
 
 
