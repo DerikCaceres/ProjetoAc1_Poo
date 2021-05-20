@@ -1,5 +1,7 @@
 package com.example.projetoac1.dtoAttendess;
 
+import com.example.projetoac1.entities.AttendessEntity;
+
 public class DtoAttendess {
 
     private int id;
@@ -18,6 +20,9 @@ public class DtoAttendess {
     public DtoAttendess() {
     }
 
+
+    public DtoAttendess(AttendessEntity entity) {
+    }
 
     public int getId() {
         return id;

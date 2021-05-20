@@ -23,40 +23,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping("/attendees")
 public class AttendessController {
 
     @Autowired
-
+    private AttenService service;
 
 
     @GetMapping
-    public ResponseEntity<Page<DtoAttendess>>getAdmin(
+    public ResponseEntity<Page<DtoAttendess>>getAttendess(
 
         @RequestParam(value = "page",         defaultValue = "0") Integer page,//?page=1
         @RequestParam(value = "linesPerPage", defaultValue = "6") Integer linesPerPage,//?page=1&perpage=4
         @RequestParam(value = "direction",    defaultValue = "ASC") String direction,//
-        @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy
+        @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy,
+        @RequestParam(value = "name",      defaultValue = "") String name,
+        @RequestParam(value = "email",      defaultValue = "") String email
     ){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
 
-        Page <DtoAttendess> list =AttenService.getAdmin(pageRequest);
+        Page <DtoAttendess> list =service.getAllAttendess(pageRequest,name,email);
 
         return ResponseEntity.ok().body(list);      
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<DtoAttendess> getAdminById(@PathVariable long id) {
-        DtoAttendess admin = AttenService.getAdminByCodigo(id);
-      return ResponseEntity.ok().body(admin);  
+        DtoAttendess attendess = service.getAttendessById(id);
+      return ResponseEntity.ok().body(attendess);  
     }
 
   
     @PostMapping
     public ResponseEntity<DtoAttendess> insert(@RequestBody DtoAttendessInsert insertDto){
-        DtoAdm dto = AttenService.insert(insertDto);
+        DtoAttendess dto = service.insert(insertDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
@@ -65,13 +68,13 @@ public class AttendessController {
 
     @DeleteMapping("/{codigo}")
     public ResponseEntity<Void> remove(@PathVariable long id){
-      AttenService.Remove(id);
+      service.deleteId(id);
       return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<DtoAttendess> Update(@RequestBody DtoAdm updateDto, @PathVariable Long id){
-        DtoAdm dto = AttenService.atualizar(id,updateDto);
+    public ResponseEntity<DtoAttendess> Update(@RequestBody DtoAttendess updateDto, @PathVariable Long id){
+        DtoAttendess dto = service.update(id,updateDto);
         return ResponseEntity.ok().body(dto);
     }
 }
