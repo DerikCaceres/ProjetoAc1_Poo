@@ -3,7 +3,7 @@ package com.example.projetoac1.entities;
 
 import java.util.List;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 
 import javax.persistence.JoinColumn;
@@ -19,7 +19,7 @@ public class AdminEntity extends BaseUser{
 
  
 
-    @OneToMany    
+    @OneToMany(cascade = CascadeType.ALL)  
     @JoinColumn(name="Adm_Id")
     private List<Evento> listaEventos;
 

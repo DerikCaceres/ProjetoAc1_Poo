@@ -3,11 +3,14 @@ package com.example.projetoac1.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.example.projetoac1.Dto.Dtoinsert;
@@ -22,6 +25,9 @@ public class Evento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @ManyToMany()
+    private List<PlaceEntity> placelist = new ArrayList<PlaceEntity>();
+    private AdminEntity adm;
     private String name;
     private String descricao;
     private String local;
@@ -103,6 +109,19 @@ public class Evento implements Serializable {
     }
     
     
+    
+    public List<PlaceEntity> getPlacelist() {
+        return placelist;
+    }
+    public void setPlacelist(List<PlaceEntity> placelist) {
+        this.placelist = placelist;
+    }
+    public AdminEntity getAdm() {
+        return adm;
+    }
+    public void setAdm(AdminEntity adm) {
+        this.adm = adm;
+    }
     @Override
     public int hashCode() {
         final int prime = 31;

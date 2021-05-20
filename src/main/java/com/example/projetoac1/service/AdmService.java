@@ -15,8 +15,10 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+@Service
 public class AdmService {
    
 
@@ -29,7 +31,7 @@ public class AdmService {
         public Page<DtoAdm> getAdmin(PageRequest pageRequest,String name,String telefone,String email){
         
         Page <DtoAdm> list = repositoryAdmin.find(pageRequest,name,telefone,email);
-        return list.map(adm -> new DtoAdm(adm));
+        return list.map(c -> new DtoAdm(c));
     } 
 
     

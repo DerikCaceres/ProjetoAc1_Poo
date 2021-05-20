@@ -1,13 +1,11 @@
 package com.example.projetoac1.controller;
 
-
-
 import java.net.URI;
 
+import com.example.projetoac1.DtoPlace.DtoPlace;
+import com.example.projetoac1.DtoPlace.DtoPlaceInser;
+import com.example.projetoac1.service.PlaceService;
 
-import com.example.projetoac1.dtoAttendess.DtoAttendess;
-import com.example.projetoac1.dtoAttendess.DtoAttendessInsert;
-import com.example.projetoac1.service.AttenService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,40 +24,41 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping("/attendees")
-public class AttendessController {
-
+@RequestMapping("/places")
+public class PlaceController {
+    
+    
     @Autowired
-    private AttenService service;
+    private PlaceService PlaceService;
+
 
 
     @GetMapping
-    public ResponseEntity<Page<DtoAttendess>>getAttendess(
+    public ResponseEntity<Page<DtoPlace>>getAdmin(
 
-        @RequestParam(value = "page",         defaultValue = "0") Integer page,//?page=1
-        @RequestParam(value = "linesPerPage", defaultValue = "6") Integer linesPerPage,//?page=1&perpage=4
-        @RequestParam(value = "direction",    defaultValue = "ASC") String direction,//
-        @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy,
-        @RequestParam(value = "name",      defaultValue = "") String name,
-        @RequestParam(value = "email",      defaultValue = "") String email
+        @RequestParam(value = "page",         defaultValue = "0") Integer page,
+        @RequestParam(value = "linesPerPage", defaultValue = "6") Integer linesPerPage,
+        @RequestParam(value = "direction",    defaultValue = "ASC") String direction,
+        @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy
+     
     ){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
 
-        Page <DtoAttendess> list =service.getAllAttendess(pageRequest,name,email);
+        Page <DtoPlace> list = PlaceService.getAll(pageRequest);
 
         return ResponseEntity.ok().body(list);      
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DtoAttendess> getAdminById(@PathVariable long id) {
-        DtoAttendess attendess = service.getAttendessById(id);
-      return ResponseEntity.ok().body(attendess);  
+    public ResponseEntity<DtoPlace> getPlaceById(@PathVariable long id) {
+        DtoPlace place = PlaceService.getPlaceById(id);
+      return ResponseEntity.ok().body(place);  
     }
 
   
     @PostMapping
-    public ResponseEntity<DtoAttendess> insert(@RequestBody DtoAttendessInsert insertDto){
-        DtoAttendess dto = service.insert(insertDto);
+    public ResponseEntity<DtoPlace> insert(@RequestBody DtoPlaceInser insertDto){
+        DtoPlace dto = PlaceService.insert(insertDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
@@ -68,14 +67,13 @@ public class AttendessController {
 
     @DeleteMapping("/{codigo}")
     public ResponseEntity<Void> remove(@PathVariable long id){
-      service.deleteId(id);
+      PlaceService.deleteId(id);
       return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<DtoAttendess> Update(@RequestBody DtoAttendess updateDto, @PathVariable Long id){
-        DtoAttendess dto = service.update(id,updateDto);
+    public ResponseEntity<DtoPlace> Update(@RequestBody DtoPlace updateDto, @PathVariable Long id){
+        DtoPlace dto = PlaceService.update(id,updateDto);
         return ResponseEntity.ok().body(dto);
     }
 }
-

@@ -14,12 +14,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AdmRepository extends JpaRepository <AdminEntity,Long>{
-    @Query("SELECT c FROM AdmEntity c " + 
-    "WHERE " +
-    "LOWER(c.nome)           LIKE   LOWER(CONCAT('%', :nome, '%'))          AND " +
-    "LOWER(c.lugar)          LIKE   LOWER(CONCAT('%', :lugar, '%'))         AND " +
-    "LOWER(c.descricao)      LIKE   LOWER(CONCAT('%', :descricao, '%'))" 
-)   
+    @Query("SELECT c FROM AdmEntity c " )   
 
     public Page<DtoAdm>find(PageRequest pageRequest,String name,String telefone,String email);
 }
