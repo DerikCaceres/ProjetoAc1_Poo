@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AdmRepository extends JpaRepository <AdminEntity,Long>{
-    @Query("SELECT c FROM AdmEntity c " )   
+    @Query("SELECT c FROM AdminEntity c " )   
 
     public Page<DtoAdm>find(PageRequest pageRequest,String name,String telefone,String email);
 }

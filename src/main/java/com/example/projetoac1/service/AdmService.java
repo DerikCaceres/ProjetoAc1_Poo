@@ -22,22 +22,20 @@ import org.springframework.web.server.ResponseStatusException;
 public class AdmService {
    
 
-    private AdmRepository repositoryAdmin;
-
 
     @Autowired
     private AdmRepository repository;
 
         public Page<DtoAdm> getAdmin(PageRequest pageRequest,String name,String telefone,String email){
         
-        Page <DtoAdm> list = repositoryAdmin.find(pageRequest,name,telefone,email);
+        Page <DtoAdm> list = repository.find(pageRequest,name,telefone,email);
         return list.map(c -> new DtoAdm(c));
     } 
 
     
     public DtoAdm getAdminByCodigo(long id) {
 
-        Optional <AdminEntity> op = repositoryAdmin.findById(id);
+        Optional <AdminEntity> op = repository.findById(id);
         AdminEntity adm = op.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Cliente não encontrado no sistema!!!"));
 
         return new DtoAdm(adm);
@@ -63,18 +61,20 @@ public class AdmService {
     }
 
 
-    public DtoAdm atualizar(long id, DtoAdm AdminDtoUp){
+    public DtoAdm atualizar(long id, DtoAdm DtoAdmUp){
 
-        try{
-            AdminEntity admin = repositoryAdmin.getOne(id);
-            admin.setName(AdminDtoUp.getName());
-            admin = repositoryAdmin.save(admin);
-            return new DtoAdm(admin);
-        }catch(EntityNotFoundException e){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"ID não encontrado no Sistema!!!");
-        }
+
+            try{
+                AdminEntity admin = repository.getOne(id);
+                admin.setName(DtoAdmUp.getName());
+                admin.setEmail(DtoAdmUp.getEmail());
+                admin.setTelefone(DtoAdmUp.getTelefone());
+                admin = repository.save(admin);
+                return new DtoAdm(admin);
+            }catch(EntityNotFoundException e){
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND,"ID não encontrado no Sistema!!!");
+            }
+             
     }
-
-
 
 }

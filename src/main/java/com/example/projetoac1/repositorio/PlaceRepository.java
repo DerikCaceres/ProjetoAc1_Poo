@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
 public interface PlaceRepository extends JpaRepository <PlaceEntity,Long>{
 
     
-    @Query("SELECT e FROM EventsCadastro e ")
-    Page<PlaceEntity> find(PageRequest pageRequest);
+    @Query("SELECT c FROM PlaceEntity c ")
+    Page<PlaceEntity> find(PageRequest pageRequest, String name, String email);
 }

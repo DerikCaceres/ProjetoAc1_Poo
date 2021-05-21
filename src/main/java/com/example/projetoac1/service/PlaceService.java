@@ -9,6 +9,7 @@ import com.example.projetoac1.DtoPlace.DtoPlaceInser;
 import com.example.projetoac1.entities.PlaceEntity;
 import com.example.projetoac1.repositorio.PlaceRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,29 +19,31 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class PlaceService {
+
+    @Autowired
     private PlaceRepository repository;
 
-    public Page<DtoPlace> getAll(PageRequest pageRequest)
+    public Page<DtoPlace> getAll(PageRequest pageRequest, String name, String email)
     {
 
-        Page <PlaceEntity> list = repository.find(pageRequest);
-        return list.map(e -> new DtoPlace(e));
+        Page <PlaceEntity> list = repository.find(pageRequest,name,email);
+        return list.map(c -> new DtoPlace(c));
 
     } 
 
     public DtoPlace getPlaceById(long id){
 
         Optional <PlaceEntity> op = repository.findById(id);
-        PlaceEntity attendess = op.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Cliente não encontrado no sistema!!!"));
+        PlaceEntity place = op.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Cliente não encontrado no sistema!!!"));
 
-        return new DtoPlace(attendess);
+        return new DtoPlace(place);
     } 
 
     public DtoPlace insert(DtoPlaceInser insertDto){
 
-        PlaceEntity entity = new PlaceEntity(insertDto);
-        entity = repository.save(entity);
-        return new DtoPlace(entity);
+        PlaceEntity place = new PlaceEntity(insertDto);
+        place = repository.save(place);
+        return new DtoPlace(place);
     }
 
     public void deleteId(Long id){
@@ -55,10 +58,10 @@ public class PlaceService {
     public DtoPlace update(long id, DtoPlace updateDto)
     {
         try{
-            PlaceEntity entity = repository.getOne(id);
-            entity.setName(updateDto.getName());
-            entity=repository.save(entity);
-            return new DtoPlace(entity);
+            PlaceEntity place = repository.getOne(id);
+            place.setName(updateDto.getName());
+            place=repository.save(place);
+            return new DtoPlace(place);
         }catch(EntityNotFoundException e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"ID não encontrado no Sistema!!!");
         }

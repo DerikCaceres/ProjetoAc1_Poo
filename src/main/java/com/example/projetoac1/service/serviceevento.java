@@ -65,7 +65,7 @@ public class ServiceEvento {
     
             return new DtoEvento(entity);
         }
-        catch(EntityNotFoundException ex){
+        catch(EntityNotFoundException e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Evento nao cadastrado");
         }
     }

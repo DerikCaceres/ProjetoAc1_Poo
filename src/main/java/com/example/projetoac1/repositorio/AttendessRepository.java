@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AttendessRepository extends JpaRepository <AttendessEntity,Long>{
 
-    @Query("SELECT e FROM EventsCadastro e ")
+    @Query("SELECT c FROM AttendessEntity c ")
     Page<AttendessEntity> find(PageRequest pageRequest, String name, String email);
 
 }
