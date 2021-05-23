@@ -48,29 +48,22 @@ public class AdmController {
 
         return ResponseEntity.ok().body(list);      
     }
-
     @GetMapping("/{id}")
     public ResponseEntity<DtoAdm> getAdminById(@PathVariable long id) {
         DtoAdm admin = adminService.getAdminByCodigo(id);
       return ResponseEntity.ok().body(admin);  
     }
-
-  
     @PostMapping
     public ResponseEntity<DtoAdm> insert(@RequestBody DtoAdmInsert insertDto){
         DtoAdm dto = adminService.insert(insertDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
-
-
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remove(@PathVariable long id){
       adminService.Remove(id);
       return ResponseEntity.noContent().build();
     }
-
     @PutMapping("{id}")
     public ResponseEntity<DtoAdm> Update(@RequestBody DtoAdm updateDto, @PathVariable Long id){
         DtoAdm dto = adminService.atualizar(id,updateDto);

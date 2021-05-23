@@ -20,7 +20,6 @@ public class DtoEvento {
     private String email;
 
     public DtoEvento(){ 
-
     }
     
     public DtoEvento(Long id,String name, String descricao,String local, LocalDate datainicio, LocalDate datafinal, LocalTime tempoinicio,  LocalTime  tempofinal, String email){

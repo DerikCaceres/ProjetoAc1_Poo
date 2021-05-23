@@ -9,6 +9,7 @@ import com.example.projetoac1.dtoAttendess.DtoAttendessInsert;
 import com.example.projetoac1.entities.AttendessEntity;
 import com.example.projetoac1.repositorio.AttendessRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,14 +17,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;  
 
+
 @Service
 public class AttenService {
+    @Autowired
     private AttendessRepository repository;
 
-    public Page<DtoAttendess> getAllAttendess(PageRequest pageRequest,String name, String email)
+    public Page<DtoAttendess> getAllAttendess(PageRequest pageRequest,String name)
     {
 
-        Page <AttendessEntity> list = repository.find(pageRequest, name, email);
+        Page <AttendessEntity> list = repository.find(pageRequest, name);
         return list.map(c -> new DtoAttendess(c));
 
     } 

@@ -4,30 +4,27 @@ import com.example.projetoac1.entities.AttendessEntity;
 
 public class DtoAttendess {
 
-    private int id;
+    private Long id;
     private String name; 
-    private String email; 
-    private String balance;
+    private double balance;
 
     
-    public DtoAttendess(int id, String name, String email, String balance) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.balance = balance;
-    }
 
-    public DtoAttendess() {
+
+    public DtoAttendess() {    
     }
 
 
     public DtoAttendess(AttendessEntity entity) {
+        this.id= entity.getId();
+        this.name= entity.getName();
+        this.balance= entity.getBalance();
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getName() {
@@ -36,16 +33,11 @@ public class DtoAttendess {
     public void setName(String name) {
         this.name = name;
     }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getBalance() {
+
+    public double getBalance() {
         return balance;
     }
-    public void setBalance(String balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 

@@ -10,9 +10,6 @@ public class DtoAdm {
     private String telefone;
     private String email;
 
-
-    
-
     public DtoAdm() {
     }
 
@@ -22,7 +19,6 @@ public class DtoAdm {
         this.telefone = telefone;
         this.email = email;
     }
-    
     
     public DtoAdm(AdminEntity adm) {
         this.id= adm.getId();

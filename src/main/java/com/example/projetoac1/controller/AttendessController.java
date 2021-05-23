@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping("/attendees")
+@RequestMapping("/attendess")
 public class AttendessController {
 
     @Autowired
@@ -36,16 +36,16 @@ public class AttendessController {
     @GetMapping
     public ResponseEntity<Page<DtoAttendess>>getAttendess(
 
-        @RequestParam(value = "page",         defaultValue = "0") Integer page,//?page=1
-        @RequestParam(value = "linesPerPage", defaultValue = "6") Integer linesPerPage,//?page=1&perpage=4
-        @RequestParam(value = "direction",    defaultValue = "ASC") String direction,//
+        @RequestParam(value = "page",         defaultValue = "0") Integer page,
+        @RequestParam(value = "linesPerPage", defaultValue = "6") Integer linesPerPage,
+        @RequestParam(value = "direction",    defaultValue = "ASC") String direction,
         @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy,
-        @RequestParam(value = "name",      defaultValue = "") String name,
-        @RequestParam(value = "email",      defaultValue = "") String email
+        @RequestParam(value = "name",      defaultValue = "") String name
+    
     ){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
 
-        Page <DtoAttendess> list =service.getAllAttendess(pageRequest,name,email);
+        Page <DtoAttendess> list =service.getAllAttendess(pageRequest,name);
 
         return ResponseEntity.ok().body(list);      
     }
@@ -56,15 +56,12 @@ public class AttendessController {
       return ResponseEntity.ok().body(attendess);  
     }
 
-  
     @PostMapping
     public ResponseEntity<DtoAttendess> insert(@RequestBody DtoAttendessInsert insertDto){
         DtoAttendess dto = service.insert(insertDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
-
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remove(@PathVariable long id){

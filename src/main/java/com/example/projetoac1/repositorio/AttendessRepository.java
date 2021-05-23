@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
 public interface AttendessRepository extends JpaRepository <AttendessEntity,Long>{
 
     @Query("SELECT c FROM AttendessEntity c ")
-    Page<AttendessEntity> find(PageRequest pageRequest, String name, String email);
+    Page<AttendessEntity> find(PageRequest pageRequest, String name);
 
 }
