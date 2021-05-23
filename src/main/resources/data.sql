@@ -1,4 +1,8 @@
-INSERT INTO evento_tabela (name,local) VALUES ('Carlos', 'Rua Barao, 456 – Sorocaba/SP');
-INSERT INTO evento_tabela (name,local) VALUES ('Nereu', 'Rua Augusta, 199 – Sorocaba/SP');
-INSERT INTO evento_tabela (name,local,email) VALUES ('Joana', 'Avenida das figueiras – Tatui/SP','Jo.ana@hotmail.com');
-INSERT INTO evento_tabela (name,local,email) VALUES ('Maria ', 'Rodovia joao leme, 235 – Sao Paulo/SP','maria.m@gmail.com');
+INSERT INTO EVENT_TABLE (name,descricao,local,datainicio, datafinal,tempoinicio,tempofinal,email) VALUES ('asdddadasd','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE(name,descricao,local,datainicio, datafinal,tempoinicio,tempofinal,email) VALUES ('dsada','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE (name,descricao,local,datainicio, datafinal,tempoinicio,tempofinal,email) VALUES ('sad','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE (name,descricao,local,datainicio,datafinal,tempoinicio,tempofinal,email) VALUES ('oijd','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE (name,descricao,local,datainicio, datafinal,tempoinicio,tempofinal,email) VALUES ('dsaoisjd','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE (name,descricao,local,datainicio, datafinal,tempoinicio,tempofinal,email) VALUES ('local','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE (name,descricao,local,datainicio, datafinal,tempoinicio,tempofinal,email) VALUES ('sasodk','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE (name,descricao,local,datainicio, datafinal,tempoinicio,tempofinal,email) VALUES ('bosta','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');

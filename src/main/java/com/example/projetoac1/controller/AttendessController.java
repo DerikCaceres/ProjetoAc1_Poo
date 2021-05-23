@@ -66,7 +66,7 @@ public class AttendessController {
 
 
 
-    @DeleteMapping("/{codigo}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> remove(@PathVariable long id){
       service.deleteId(id);
       return ResponseEntity.noContent().build();

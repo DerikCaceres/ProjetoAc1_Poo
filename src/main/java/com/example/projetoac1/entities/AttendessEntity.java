@@ -2,12 +2,14 @@ package com.example.projetoac1.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 import com.example.projetoac1.dtoAttendess.DtoAttendessInsert;
 
 
 @Entity
 @PrimaryKeyJoinColumn(name="USERBASE_ID")
+@Table(name="TB_ATTENDESS")
 public class AttendessEntity extends BaseUser{
 
     private double balance;
@@ -27,6 +29,8 @@ public class AttendessEntity extends BaseUser{
 
 
     public AttendessEntity(DtoAttendessInsert insertDto) {
+        super(insertDto.getId(),insertDto.getName());
+        this.balance = insertDto.getBalance();
     }
 
 

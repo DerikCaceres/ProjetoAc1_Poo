@@ -18,7 +18,7 @@ import com.example.projetoac1.Dto.Dtoinsert;
 
 
 @Entity
-@Table(name = "Evento_tabela")
+@Table(name = "EVENT_TABLE")
 public class Evento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id 

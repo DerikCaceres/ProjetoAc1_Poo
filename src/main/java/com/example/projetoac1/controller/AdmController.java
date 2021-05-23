@@ -65,7 +65,7 @@ public class AdmController {
 
 
 
-    @DeleteMapping("/{codigo}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> remove(@PathVariable long id){
       adminService.Remove(id);
       return ResponseEntity.noContent().build();

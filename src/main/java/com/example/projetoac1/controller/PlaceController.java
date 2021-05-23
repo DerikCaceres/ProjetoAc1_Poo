@@ -39,12 +39,14 @@ public class PlaceController {
         @RequestParam(value = "page",         defaultValue = "0") Integer page,
         @RequestParam(value = "linesPerPage", defaultValue = "6") Integer linesPerPage,
         @RequestParam(value = "direction",    defaultValue = "ASC") String direction,
-        @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy
+        @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy,
+        @RequestParam(value = "name",         defaultValue = "") String name,
+        @RequestParam(value = "email",      defaultValue = "") String email
      
     ){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
 
-        Page <DtoPlace> list = PlaceService.getAll(pageRequest);
+        Page <DtoPlace> list = PlaceService.getAll(pageRequest,name,email);
 
         return ResponseEntity.ok().body(list);      
     }
@@ -65,7 +67,7 @@ public class PlaceController {
 
 
 
-    @DeleteMapping("/{codigo}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> remove(@PathVariable long id){
       PlaceService.deleteId(id);
       return ResponseEntity.noContent().build();

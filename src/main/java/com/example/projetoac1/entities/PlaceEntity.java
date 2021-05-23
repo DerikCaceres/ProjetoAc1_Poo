@@ -8,10 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import com.example.projetoac1.DtoPlace.DtoPlaceInser;
 
 @Entity
+@Table(name="TB_PLACE")
 public class PlaceEntity {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -25,9 +27,12 @@ public class PlaceEntity {
 
 
 
-    public PlaceEntity(PlaceEntity entity) {
+    public PlaceEntity() {
     }
     public PlaceEntity(DtoPlaceInser insertDto) {
+        this.id = insertDto.getId();
+        this.name = insertDto.getName();
+        this.address = insertDto.getAdress();
     }
     public long getId() {
         return id;

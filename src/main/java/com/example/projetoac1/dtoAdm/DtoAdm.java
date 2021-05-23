@@ -15,8 +15,6 @@ public class DtoAdm {
 
     public DtoAdm() {
     }
-    public DtoAdm(DtoAdm adm) {
-    }
 
     public DtoAdm(long id, String name, String telefone, String email) {
         this.id = id;
@@ -27,7 +25,19 @@ public class DtoAdm {
     
     
     public DtoAdm(AdminEntity adm) {
+        this.id= adm.getId();
+        this.name= adm.getName();
+        this.telefone = adm.getTelefone();
+        this.email= adm.getEmail();
     }
+
+    public DtoAdm(DtoAdm adm) {
+        this.id = adm.getId();
+        this.name = adm.getName();
+        this.email = adm.getEmail();
+        this.telefone = adm.getTelefone();
+    }
+    
     public long getId() {
         return id;
     }

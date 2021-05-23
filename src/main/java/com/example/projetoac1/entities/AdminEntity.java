@@ -1,6 +1,7 @@
 package com.example.projetoac1.entities;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,19 +10,21 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 import com.example.projetoac1.dtoAdm.DtoAdmInsert;
 
 
 @Entity
 @PrimaryKeyJoinColumn(name="USERBASE_ID")
+@Table(name="TB_ADMIN")
 public class AdminEntity extends BaseUser{
 
  
 
     @OneToMany(cascade = CascadeType.ALL)  
     @JoinColumn(name="Adm_Id")
-    private List<Evento> listaEventos;
+    private List<Evento> listaEventos = new ArrayList<>();
 
 
     private String telefone;
@@ -39,8 +42,9 @@ public class AdminEntity extends BaseUser{
 
 
     public AdminEntity(DtoAdmInsert insertDto) {
+        super(insertDto.getId(), insertDto.getName(), insertDto.getEmail());
+        this.telefone = insertDto.getTelefone();
     }
-
 
     public List<Evento> getListaEventos() {
         return listaEventos;
@@ -60,7 +64,7 @@ public class AdminEntity extends BaseUser{
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
+ 
 
 
  
