@@ -8,7 +8,7 @@ public class DtoAdmInsert {
 
     private String email;
 
-    private String telefone;
+    private String phone;
 
     public int getId() {
         return id;
@@ -34,12 +34,12 @@ public class DtoAdmInsert {
         this.email = email;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
     
 

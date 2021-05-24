@@ -41,12 +41,12 @@ public class PlaceController {
         @RequestParam(value = "direction",    defaultValue = "ASC") String direction,
         @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy,
         @RequestParam(value = "name",         defaultValue = "") String name,
-        @RequestParam(value = "email",      defaultValue = "") String email
+        @RequestParam(value = "Adress",      defaultValue = "") String Adress
      
     ){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
 
-        Page <DtoPlace> list = PlaceService.getAll(pageRequest,name,email);
+        Page <DtoPlace> list = PlaceService.getAll(pageRequest,name,Adress);
 
         return ResponseEntity.ok().body(list);      
     }

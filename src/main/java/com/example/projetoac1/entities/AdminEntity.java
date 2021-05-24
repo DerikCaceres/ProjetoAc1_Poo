@@ -24,45 +24,45 @@ public class AdminEntity extends BaseUser{
 
     @OneToMany(cascade = CascadeType.ALL)  
     @JoinColumn(name="Adm_Id")
-    private List<Evento> listaEventos = new ArrayList<>();
+    private List<Evento> eventList = new ArrayList<>();
 
 
-    private String telefone;
+    private String phone;
 
 
     public AdminEntity() {
     }
 
 
-    public AdminEntity(long id, String name, String email, List<Evento> listaEventos, String telefone) {
+    public AdminEntity(long id, String name, String email, List<Evento> eventList, String phone) {
         super(id,name,email);
-        this.listaEventos = listaEventos;
-        this.telefone = telefone;
+        this.eventList = eventList;
+        this.phone = phone;
     }
 
 
     public AdminEntity(DtoAdmInsert insertDto) {
         super(insertDto.getId(), insertDto.getName(), insertDto.getEmail());
-        this.telefone = insertDto.getTelefone();
+        this.phone = insertDto.getPhone();
     }
 
-    public List<Evento> getListaEventos() {
-        return listaEventos;
-    }
-
-
-    public void setListaEventos(List<Evento> listaEventos) {
-        this.listaEventos = listaEventos;
+    public List<Evento> getEventList() {
+        return eventList;
     }
 
 
-    public String getTelefone() {
-        return telefone;
+    public void setEventList(List<Evento> eventList) {
+        this.eventList = eventList;
     }
 
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public String getPhone() {
+        return phone;
+    }
+
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
  
 

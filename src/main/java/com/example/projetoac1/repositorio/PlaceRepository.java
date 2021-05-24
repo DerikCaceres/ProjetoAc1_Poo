@@ -13,5 +13,5 @@ public interface PlaceRepository extends JpaRepository <PlaceEntity,Long>{
 
     
     @Query("SELECT c FROM PlaceEntity c ")
-    Page<PlaceEntity> find(PageRequest pageRequest, String name, String email);
+    Page<PlaceEntity> find(PageRequest pageRequest, String name, String Adress);
 }

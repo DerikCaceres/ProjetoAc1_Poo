@@ -7,23 +7,23 @@ public class DtoAdm {
 
     private long id;
     private String name;
-    private String telefone;
+    private String phone;
     private String email;
 
     public DtoAdm() {
     }
 
-    public DtoAdm(long id, String name, String telefone, String email) {
+    public DtoAdm(long id, String name, String phone, String email) {
         this.id = id;
         this.name = name;
-        this.telefone = telefone;
+        this.phone = phone;
         this.email = email;
     }
     
     public DtoAdm(AdminEntity adm) {
         this.id= adm.getId();
         this.name= adm.getName();
-        this.telefone = adm.getTelefone();
+        this.phone = adm.getPhone();
         this.email= adm.getEmail();
     }
 
@@ -31,7 +31,7 @@ public class DtoAdm {
         this.id = adm.getId();
         this.name = adm.getName();
         this.email = adm.getEmail();
-        this.telefone = adm.getTelefone();
+        this.phone = adm.getPhone();
     }
     
     public long getId() {
@@ -46,11 +46,11 @@ public class DtoAdm {
     public void setName(String name) {
         this.name = name;
     }
-    public String getTelefone() {
-        return telefone;
+    public String getPhone() {
+        return phone;
     }
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
     public String getEmail() {
         return email;

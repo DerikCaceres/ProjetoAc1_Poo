@@ -30,9 +30,9 @@ public class ServiceEvento {
     private Eventorepositorio repository;
 
 
-    public Page<DtoEvento> getEvento(PageRequest pageRequest,String name, String local,LocalDate datainicio, String descricao){
+    public Page<DtoEvento> getEvento(PageRequest pageRequest,String name, String place,LocalDate startdate, String description){
         
-        Page <Evento> list = repository.find(pageRequest,name,local,datainicio,descricao);
+        Page <Evento> list = repository.find(pageRequest,name,place,startdate,description);
         return list.map(e -> new DtoEvento(e));
     } 
 
@@ -54,12 +54,12 @@ public class ServiceEvento {
         try{
             Evento entity = repository.getOne(id);
             entity.setName(updto.getName());
-            entity.setDescricao(updto.getDescricao());
-            entity.setLocal(updto.getLocal());
-            entity.setDatainicio(updto.getDatainicio());
-            entity.setDatafinal(updto.getDatafinal());
-            entity.setTempoinicio(updto.getTempoinicio());
-            entity.setTempofinal(updto.getTempofinal());
+            entity.setDescription(updto.getDescription());
+            entity.setPlace(updto.getPlace());
+            entity.setStartdate(updto.getStartdate());
+            entity.setEnddate(updto.getEnddate());
+            entity.setStarttime(updto.getStarttime());
+            entity.setEndtime(updto.getEndtime());
             entity.setEmail(updto.getEmail());
             entity = repository.save(entity);
     

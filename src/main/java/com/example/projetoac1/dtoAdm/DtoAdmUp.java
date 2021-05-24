@@ -5,9 +5,9 @@ public class DtoAdmUp {
 
     private String name;
     
-    private String Email;
+    private String email;
 
-    private String telefone;
+    private String phone;
 
     public String getName() {
         return name;
@@ -18,19 +18,19 @@ public class DtoAdmUp {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
   
 }

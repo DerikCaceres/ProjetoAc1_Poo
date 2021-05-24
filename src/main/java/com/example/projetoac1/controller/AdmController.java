@@ -1,4 +1,4 @@
-//derik caceres 190695
+
 package com.example.projetoac1.controller;
 
 import java.net.URI;
@@ -40,12 +40,12 @@ public class AdmController {
         @RequestParam(value = "direction",    defaultValue = "ASC") String direction,
         @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy,
         @RequestParam(value = "nome",         defaultValue = "") String name,
-        @RequestParam(value = "telefone",      defaultValue = "") String telefone,
+        @RequestParam(value = "telefone",      defaultValue = "") String phone,
         @RequestParam(value = "email",         defaultValue = "") String email
     ){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
 
-        Page <DtoAdm> list = adminService.getAdmin(pageRequest,name,telefone,email);
+        Page <DtoAdm> list = adminService.getAdmin(pageRequest,name,phone,email);
 
         return ResponseEntity.ok().body(list);      
     }

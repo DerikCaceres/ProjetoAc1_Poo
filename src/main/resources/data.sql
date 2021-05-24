@@ -1,8 +1,8 @@
-INSERT INTO EVENT_TABLE (name,descricao,local,datainicio, datafinal,tempoinicio,tempofinal,email) VALUES ('asdddadasd','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
-INSERT INTO EVENT_TABLE(name,descricao,local,datainicio, datafinal,tempoinicio,tempofinal,email) VALUES ('dsada','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
-INSERT INTO EVENT_TABLE (name,descricao,local,datainicio, datafinal,tempoinicio,tempofinal,email) VALUES ('sad','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
-INSERT INTO EVENT_TABLE (name,descricao,local,datainicio,datafinal,tempoinicio,tempofinal,email) VALUES ('oijd','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
-INSERT INTO EVENT_TABLE (name,descricao,local,datainicio, datafinal,tempoinicio,tempofinal,email) VALUES ('dsaoisjd','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
-INSERT INTO EVENT_TABLE (name,descricao,local,datainicio, datafinal,tempoinicio,tempofinal,email) VALUES ('local','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
-INSERT INTO EVENT_TABLE (name,descricao,local,datainicio, datafinal,tempoinicio,tempofinal,email) VALUES ('sasodk','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
-INSERT INTO EVENT_TABLE (name,descricao,local,datainicio, datafinal,tempoinicio,tempofinal,email) VALUES ('bosta','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE (name,description,place,startdate, enddate,starttime,endtime,email) VALUES ('asdddadasd','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE(name,description,place,startdate, enddate,starttime,endtime,email) VALUES ('dsada','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE (name,description,place,startdate, enddate,starttime,endtime,email) VALUES ('sad','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE (name,description,place,startdate,enddate,starttime,endtime,email) VALUES ('oijd','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE (name,description,place,startdate, enddate,starttime,endtime,email) VALUES ('dsaoisjd','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE (name,description,place,startdate, enddate,starttime,endtime,email) VALUES ('place','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE (name,description,place,startdate, enddate,starttime,endtime,email) VALUES ('sasodk','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');
+INSERT INTO EVENT_TABLE (name,description,place,startdate, enddate,starttime,endtime,email) VALUES ('bosta','teste1','sao paulo','2021-06-24','2022-10-24','12:00:00','18:00:00','ovatsug.gu@hotmail.com');

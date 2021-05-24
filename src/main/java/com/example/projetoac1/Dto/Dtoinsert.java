@@ -6,13 +6,13 @@ import java.time.LocalTime;
 public class Dtoinsert {
     private Long id;
     private String name;
-    private String descricao;
-    private String local;
+    private String description;
+    private String place;
 
-    private LocalDate datainicio;
-    private LocalDate datafinal;
-    private LocalTime tempoinicio;
-    private LocalTime tempofinal;
+    private LocalDate startdate;
+    private LocalDate enddate;
+    private LocalTime starttime;
+    private LocalTime endtime;
 
     private String email;
 
@@ -32,52 +32,52 @@ public class Dtoinsert {
         this.name = name;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getLocal() {
-        return local;
+    public String getPlace() {
+        return place;
     }
 
-    public void setLocal(String local) {
-        this.local = local;
+    public void setPlace(String place) {
+        this.place = place;
     }
 
-    public LocalDate getDatainicio() {
-        return datainicio;
+    public LocalDate getStartdate() {
+        return startdate;
     }
 
-    public void setDatainicio(LocalDate datainicio) {
-        this.datainicio = datainicio;
+    public void setStartdate(LocalDate startdate) {
+        this.startdate = startdate;
     }
 
-    public LocalDate getDatafinal() {
-        return datafinal;
+    public LocalDate getEnddate() {
+        return enddate;
     }
 
-    public void setDatafinal(LocalDate datafinal) {
-        this.datafinal = datafinal;
+    public void setEnddate(LocalDate enddate) {
+        this.enddate = enddate;
     }
 
-    public LocalTime getTempoinicio() {
-        return tempoinicio;
+    public LocalTime getStarttime() {
+        return starttime;
     }
 
-    public void setTempoinicio(LocalTime tempoinicio) {
-        this.tempoinicio = tempoinicio;
+    public void setStarttime(LocalTime starttime) {
+        this.starttime = starttime;
     }
 
-    public LocalTime getTempofinal() {
-        return tempofinal;
+    public LocalTime getEndtime() {
+        return endtime;
     }
 
-    public void setTempofinal(LocalTime tempofinal) {
-        this.tempofinal = tempofinal;
+    public void setEndtime(LocalTime endtime) {
+        this.endtime = endtime;
     }
 
     public String getEmail() {

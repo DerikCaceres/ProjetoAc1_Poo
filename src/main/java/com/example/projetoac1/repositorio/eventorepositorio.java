@@ -19,12 +19,12 @@ public interface Eventorepositorio extends JpaRepository<Evento, Long>{
     @Query("SELECT c FROM Evento c " + 
     "WHERE " +
     "LOWER(c.name)           LIKE   LOWER(CONCAT('%', :name, '%'))          AND " +
-    "LOWER(c.local)          LIKE   LOWER(CONCAT('%', :local, '%'))         AND " +
-    "LOWER(c.descricao)      LIKE   LOWER(CONCAT('%', :descricao, '%'))     AND " +
-    "c.datainicio > :datainicio" 
+    "LOWER(c.place)          LIKE   LOWER(CONCAT('%', :place, '%'))         AND " +
+    "LOWER(c.description)      LIKE   LOWER(CONCAT('%', :description, '%'))     AND " +
+    "c.startdate > :startdate" 
 )   
 
-    public Page<Evento> find(Pageable pageRequest, String name, String local,LocalDate datainicio, String descricao);
+    public Page<Evento> find(Pageable pageRequest, String name, String place,LocalDate startdate, String description);
   
 }
 

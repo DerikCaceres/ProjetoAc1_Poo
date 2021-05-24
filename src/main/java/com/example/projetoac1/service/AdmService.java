@@ -26,9 +26,9 @@ public class AdmService {
     @Autowired
     private AdmRepository repository;
 
-        public Page<DtoAdm> getAdmin(PageRequest pageRequest,String name,String telefone,String email){
+        public Page<DtoAdm> getAdmin(PageRequest pageRequest,String name,String phone,String email){
         
-        Page <DtoAdm> list = repository.find(pageRequest,name,telefone,email);
+        Page <DtoAdm> list = repository.find(pageRequest,name,phone,email);
         return list.map(c -> new DtoAdm(c));
     } 
 
@@ -68,7 +68,7 @@ public class AdmService {
                 AdminEntity admin = repository.getOne(id);
                 admin.setName(DtoAdmUp.getName());
                 admin.setEmail(DtoAdmUp.getEmail());
-                admin.setTelefone(DtoAdmUp.getTelefone());
+                admin.setPhone(DtoAdmUp.getPhone());
                 admin = repository.save(admin);
                 return new DtoAdm(admin);
             }catch(EntityNotFoundException e){

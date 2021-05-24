@@ -9,42 +9,42 @@ public class DtoEvento {
 
     private Long id;
     private String name;
-    private String descricao;
-    private String local;
+    private String description;
+    private String place;
 
-    private LocalDate datainicio;
-    private LocalDate datafinal;
-    private LocalTime tempoinicio;
-    private LocalTime tempofinal;
+    private LocalDate startdate;
+    private LocalDate enddate;
+    private LocalTime starttime;
+    private LocalTime endtime;
 
     private String email;
 
     public DtoEvento(){ 
     }
     
-    public DtoEvento(Long id,String name, String descricao,String local, LocalDate datainicio, LocalDate datafinal, LocalTime tempoinicio,  LocalTime  tempofinal, String email){
+    public DtoEvento(Long id,String name, String description,String place, LocalDate startdate, LocalDate enddate, LocalTime starttime,  LocalTime  endtime, String email){
         
        
         this.id = id;
         this.name = name;
-        this.descricao = descricao;
-        this.local = local;
-        this.datainicio = datainicio;
-        this.datafinal = datafinal;
-        this.tempoinicio = tempoinicio;
-        this.tempofinal = tempofinal;
+        this.description = description;
+        this.place = place;
+        this.startdate = startdate;
+        this.enddate = enddate;
+        this.starttime = starttime;
+        this.endtime = endtime;
         this.email = email;
     }
 
     public DtoEvento(Evento eve) {
         this.id = eve.getId();
         this.name = eve.getName();
-        this.descricao = eve.getDescricao();
-        this.local = eve.getLocal();
-        this.datainicio = eve.getDatainicio();
-        this.datafinal = eve.getDatafinal();
-        this.tempoinicio = eve.getTempoinicio();
-        this.tempofinal = eve.getTempofinal();
+        this.description = eve.getDescription();
+        this.place = eve.getPlace();
+        this.startdate = eve.getStartdate();
+        this.enddate = eve.getEnddate();
+        this.starttime = eve.getStarttime();
+        this.endtime = eve.getEndtime();
         this.email = eve.getEmail();
     }
 
@@ -61,41 +61,41 @@ public class DtoEvento {
     public void setName(String name) {
         this.name = name;
     }
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
-    public void setDescricao(String descricao){
-        this.descricao = descricao;
+    public void setDescription(String description){
+        this.description = description;
     }
-    public String getLocal() {
-        return local;
+    public String getPlace() {
+        return place;
     }
-    public void setLocal(String local) {
-        this.local = local;
+    public void setPlace(String place) {
+        this.place = place;
     }
-    public LocalDate Datainicio() {
-        return datainicio;
+    public LocalDate getStartdate() {
+        return startdate;
     }
-    public void setDatainicio(LocalDate datainicio) {
-        this.datainicio = datainicio;
+    public void setStartdate(LocalDate startdate) {
+        this.startdate = startdate;
     }
-    public LocalDate getDatafinal() {
-        return datafinal;
+    public LocalDate getEndDate() {
+        return enddate;
     }
-    public void setDatafinal(LocalDate datafinal) {
-        this.datafinal = datafinal;
+    public void setEndDate(LocalDate enddate) {
+        this.enddate = enddate;
     }
-    public LocalTime  getTempoinicio() {
-        return tempoinicio;
+    public LocalTime  getStarttime() {
+        return starttime;
     }
-    public void setTempoinicio(LocalTime tempoinicio) {
-        this.tempoinicio = tempoinicio;
+    public void setStarttime(LocalTime starttime) {
+        this.starttime = starttime;
     }
-    public LocalTime  getTempofinal() {
-        return tempofinal;
+    public LocalTime  getEndtime() {
+        return endtime;
     }
-    public void setTempofinal(LocalTime tempofinal) {
-        this.tempofinal = tempofinal;
+    public void setEndtime(LocalTime endtime) {
+        this.endtime = endtime;
     }
     public String getEmail() {
         return email;

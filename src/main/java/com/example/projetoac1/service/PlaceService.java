@@ -23,10 +23,10 @@ public class PlaceService {
     @Autowired
     private PlaceRepository repository;
 
-    public Page<DtoPlace> getAll(PageRequest pageRequest, String name, String email)
+    public Page<DtoPlace> getAll(PageRequest pageRequest, String name, String adress)
     {
 
-        Page <PlaceEntity> list = repository.find(pageRequest,name,email);
+        Page <PlaceEntity> list = repository.find(pageRequest,name,adress);
         return list.map(c -> new DtoPlace(c));
 
     } 

@@ -40,13 +40,13 @@ public class Eventocontroller
     @RequestParam(value = "direction",    defaultValue = "ASC") String direction,
     @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy,
     @RequestParam(value = "name",         defaultValue = "") String name,
-    @RequestParam(value = "local",        defaultValue = "") String local,
-    @RequestParam(value = "datainicio",   defaultValue = "14/06/1800") LocalDate datainicio,
-    @RequestParam(value = "descricao",  defaultValue = "") String descricao)
+    @RequestParam(value = "local",        defaultValue = "") String place,
+    @RequestParam(value = "datainicio",   defaultValue = "14/06/1800") LocalDate startdate,
+    @RequestParam(value = "descricao",  defaultValue = "") String description)
    
     {
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
-        Page <DtoEvento> list = srvc.getEvento(pageRequest,name,local,datainicio,descricao);
+        Page <DtoEvento> list = srvc.getEvento(pageRequest,name,place,startdate,description);
         return ResponseEntity.ok().body(list);
 
     }
