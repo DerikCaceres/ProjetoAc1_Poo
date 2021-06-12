@@ -69,4 +69,7 @@ public class PlaceService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found");
          }
      }
+     
+
+     
 }

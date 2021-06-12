@@ -40,14 +40,13 @@ public class EventController {
         @RequestParam(value = "direction",    defaultValue = "ASC") String direction,//
         @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy,//
         @RequestParam(value = "name",         defaultValue = "") String name,
-        @RequestParam(value = "place",      defaultValue = "") String place,
         @RequestParam(value = "description",      defaultValue = "") String description,
         @RequestParam(value = "startDate",      defaultValue = "24/06/2000") LocalDate startDate
         
     ){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
 
-        Page <EventDto> list = service.getClienteCadastro(pageRequest,name,place,description,startDate);
+        Page <EventDto> list = service.getClienteCadastro(pageRequest,name,description,startDate);
 
         return ResponseEntity.ok().body(list);      
     }
@@ -75,5 +74,10 @@ public class EventController {
         EventDto dto = service.atualizar(id,updateDto);
         return ResponseEntity.ok().body(dto);
     }
-                                                                                
+           
+     @PostMapping("/{idevent}/places/{idplace}")
+    public ResponseEntity<EventDto> placeevent(@PathVariable ("idevent") Long idevent, @PathVariable("idplace") Long idplace) {
+     service.placeevent(idevent, idplace);
+       return null;
+    }
 }

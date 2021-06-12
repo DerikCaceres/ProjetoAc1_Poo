@@ -37,7 +37,6 @@ public class EventsCadastro implements Serializable {
 
     private String name;
     private String description;
-    private String place;
     private String email;
 
     private LocalDate startDate;
@@ -53,13 +52,13 @@ public class EventsCadastro implements Serializable {
         
     }
 
-    public EventsCadastro(AdminEntity admin, String name, String description, String place, String email,
+    public EventsCadastro(AdminEntity admin, String name, String description,  String email,
             LocalDate startDate, LocalDate endDate, LocalTime startTime, LocalTime endTime) {
         
         this.admin = admin;
         this.name = name;
         this.description = description;
-        this.place = place;
+
         this.email = email;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -72,7 +71,6 @@ public class EventsCadastro implements Serializable {
     
         this.name = insertDto.getName();
         this.description = insertDto.getDescription();
-        this.place = insertDto.getPlace();
         this.email = insertDto.getEmail();
         this.startDate = insertDto.getStartDate();
         this.endDate = insertDto.getEndDate();
@@ -113,14 +111,6 @@ public class EventsCadastro implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getPlace() {
-        return place;
-    }
-
-    public void setPlace(String place) {
-        this.place = place;
     }
 
     public String getEmail() {
@@ -172,9 +162,29 @@ public class EventsCadastro implements Serializable {
         this.endTime = endTime;
     }
 
-   
-    
-    
+    public List<PlaceEntity> getListPlace() {
+        return listPlace;
+    }
+
+    public void addPlace(PlaceEntity place) {
+        this.listPlace.add(place);
+    }
+
+    public Boolean getPlacebyId(Long id)  {
+
+        for (PlaceEntity placeEntity : listPlace) {
+            if(placeEntity.getId() == id) {
+                return true;
+            }
+        }
+
+        return false;
+
+
+    }
+
+
+
 
     @Override
     public int hashCode() {
