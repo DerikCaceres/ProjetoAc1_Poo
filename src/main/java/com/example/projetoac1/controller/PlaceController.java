@@ -2,8 +2,10 @@ package com.example.projetoac1.controller;
 
 import java.net.URI;
 
-import com.example.projetoac1.DtoPlace.DtoPlace;
-import com.example.projetoac1.DtoPlace.DtoPlaceInser;
+
+import com.example.projetoac1.DtoPlace.PlaceDto;
+import com.example.projetoac1.DtoPlace.PlaceInsertDto;
+import com.example.projetoac1.DtoPlace.PlaceUpdateDto;
 import com.example.projetoac1.service.PlaceService;
 
 
@@ -26,41 +28,39 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RestController
 @RequestMapping("/places")
 public class PlaceController {
-    
-    
+
     @Autowired
-    private PlaceService PlaceService;
+    private PlaceService placeService;
 
 
 
     @GetMapping
-    public ResponseEntity<Page<DtoPlace>>getAdmin(
+    public ResponseEntity<Page<PlaceDto>>getAdmin(
 
-        @RequestParam(value = "page",         defaultValue = "0") Integer page,
-        @RequestParam(value = "linesPerPage", defaultValue = "6") Integer linesPerPage,
-        @RequestParam(value = "direction",    defaultValue = "ASC") String direction,
+        @RequestParam(value = "page",         defaultValue = "0") Integer page,//?page=1
+        @RequestParam(value = "linesPerPage", defaultValue = "6") Integer linesPerPage,//?page=1&perpage=4
+        @RequestParam(value = "direction",    defaultValue = "ASC") String direction,//
         @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy,
         @RequestParam(value = "name",         defaultValue = "") String name,
-        @RequestParam(value = "Adress",      defaultValue = "") String Adress
-     
+        @RequestParam(value = "Address",      defaultValue = "") String Address
     ){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
 
-        Page <DtoPlace> list = PlaceService.getAll(pageRequest,name,Adress);
+        Page <PlaceDto> list = placeService.getPlace(pageRequest, name, Address);
 
         return ResponseEntity.ok().body(list);      
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DtoPlace> getPlaceById(@PathVariable long id) {
-        DtoPlace place = PlaceService.getPlaceById(id);
+    public ResponseEntity<PlaceDto> getPlaceById(@PathVariable long id) {
+      PlaceDto place = placeService.getPlaceById(id);
       return ResponseEntity.ok().body(place);  
     }
 
   
     @PostMapping
-    public ResponseEntity<DtoPlace> insert(@RequestBody DtoPlaceInser insertDto){
-        DtoPlace dto = PlaceService.insert(insertDto);
+    public ResponseEntity<PlaceDto> insert(@RequestBody PlaceInsertDto insertDto){
+        PlaceDto dto = placeService.insert(insertDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
@@ -69,13 +69,16 @@ public class PlaceController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remove(@PathVariable long id){
-      PlaceService.deleteId(id);
+      placeService.remove(id);
       return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<DtoPlace> Update(@RequestBody DtoPlace updateDto, @PathVariable Long id){
-        DtoPlace dto = PlaceService.update(id,updateDto);
+    public ResponseEntity<PlaceDto> Update(@RequestBody PlaceUpdateDto updateDto, @PathVariable Long id){
+      PlaceDto dto = placeService.update(id,updateDto);
         return ResponseEntity.ok().body(dto);
     }
+
+
+    
 }

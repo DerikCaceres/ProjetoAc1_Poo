@@ -26,8 +26,8 @@ public class BaseUser implements Serializable{
     private String name;
     private String email;
 
-    public BaseUser(){
-        
+
+    public BaseUser() {
     }
 
     public BaseUser(long id, String name, String email) {
@@ -38,7 +38,9 @@ public class BaseUser implements Serializable{
     public BaseUser(long id, String name) {
         this.id = id;
         this.name = name;
+        
     }
+
 
     public long getId() {
         return id;
@@ -46,19 +48,21 @@ public class BaseUser implements Serializable{
     public void setId(long id) {
         this.id = id;
     }
+    
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getEmail() {
         return email;
     }
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     @Override
     public int hashCode() {
@@ -83,8 +87,6 @@ public class BaseUser implements Serializable{
                 return false;
         } else if (!email.equals(other.email))
             return false;
-        if (id != other.id)
-            return false;
         if (name == null) {
             if (other.name != null)
                 return false;
@@ -92,4 +94,7 @@ public class BaseUser implements Serializable{
             return false;
         return true;
     }
+
+
+    
 }

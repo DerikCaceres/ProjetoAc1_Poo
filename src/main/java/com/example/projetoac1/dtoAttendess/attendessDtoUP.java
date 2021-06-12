@@ -1,6 +1,6 @@
 package com.example.projetoac1.dtoAttendess;
 
-public class DtoAttendessUp {
+public class attendessDtoUP {
 
     
     private long balance;

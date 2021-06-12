@@ -11,7 +11,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PlaceRepository extends JpaRepository <PlaceEntity,Long>{
 
+        //isso é uma consulta JPQL!!!!!
+    @Query("SELECT c FROM PlaceEntity c ")   
     
-    @Query("SELECT c FROM PlaceEntity c ")
-    Page<PlaceEntity> find(PageRequest pageRequest, String name, String Adress);
+        public Page<PlaceEntity>find(PageRequest pageRequest,String name,String Address);
+
+
+    
 }

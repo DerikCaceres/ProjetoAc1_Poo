@@ -2,31 +2,32 @@ package com.example.projetoac1.dtoAttendess;
 
 import com.example.projetoac1.entities.AttendessEntity;
 
-public class DtoAttendess {
+public class attendessDto {
 
     private Long id;
-    private String name; 
+    private String name;  
     private double balance;
 
-    
 
+    public attendessDto(){
 
-    public DtoAttendess() {    
+    }
+   
+    public attendessDto(AttendessEntity c) {
+        this.id= c.getId();
+        this.name= c.getName();
+        this.balance= c.getBalance();
     }
 
-
-    public DtoAttendess(AttendessEntity entity) {
-        this.id= entity.getId();
-        this.name= entity.getName();
-        this.balance= entity.getBalance();
-    }
-
+   
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
@@ -37,7 +38,7 @@ public class DtoAttendess {
     public double getBalance() {
         return balance;
     }
-    public void setBalance(Double balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -45,3 +46,9 @@ public class DtoAttendess {
     
     
 }
+
+
+
+    
+    
+

@@ -1,6 +1,6 @@
 package com.example.projetoac1.dtoAttendess;
 
-public class DtoAttendessInsert {
+public class attendessDtoInsert {
 
 
     private int id;

@@ -11,7 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="TB_TICKET")
-public class EntityTicket {
+public class TicketEntity {
+
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -20,8 +21,9 @@ public class EntityTicket {
     private Instant date;
     private Double price;
 
-    private AttendessEntity atten;
+    private AttendessEntity attendess;
     
+
     public long getId() {
         return id;
     }
@@ -40,11 +42,11 @@ public class EntityTicket {
     public void setPrice(Double price) {
         this.price = price;
     }
-    public AttendessEntity getAtten() {
-        return atten;
+    public AttendessEntity getAttendess() {
+        return attendess;
     }
-    public void setAtten(AttendessEntity atten) {
-        this.atten = atten;
+    public void setAttendess(AttendessEntity attendess) {
+        this.attendess = attendess;
     }
 
 

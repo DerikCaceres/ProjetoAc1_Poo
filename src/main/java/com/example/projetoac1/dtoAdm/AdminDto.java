@@ -2,56 +2,68 @@ package com.example.projetoac1.dtoAdm;
 
 import com.example.projetoac1.entities.AdminEntity;
 
-public class DtoAdm {
+public class AdminDto {
 
 
     private long id;
     private String name;
-    private String phone;
+    private String phoneNumber;
     private String email;
 
-    public DtoAdm() {
+
+    
+
+    public AdminDto() {
     }
 
-    public DtoAdm(long id, String name, String phone, String email) {
+    public AdminDto(long id, String name, String phoneNumber, String email) {
         this.id = id;
         this.name = name;
-        this.phone = phone;
+        this.phoneNumber = phoneNumber;
         this.email = email;
     }
+
+
     
-    public DtoAdm(AdminEntity adm) {
-        this.id= adm.getId();
-        this.name= adm.getName();
-        this.phone = adm.getPhone();
-        this.email= adm.getEmail();
+    public AdminDto(AdminEntity admin) {
+        this.id= admin.getId();
+        this.name= admin.getName();
+        this.phoneNumber = admin.getPhoneNumber();
+        this.email= admin.getEmail();
     }
 
-    public DtoAdm(DtoAdm adm) {
+    
+
+    public AdminDto(AdminDto adm) {
         this.id = adm.getId();
         this.name = adm.getName();
         this.email = adm.getEmail();
-        this.phone = adm.getPhone();
+        this.phoneNumber = adm.getPhoneNumber();
     }
-    
+
     public long getId() {
         return id;
     }
     public void setId(long id) {
         this.id = id;
     }
+    
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
-    public String getPhone() {
-        return phone;
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
-    public void setPhone(String phone) {
-        this.phone = phone;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
+
     public String getEmail() {
         return email;
     }

@@ -4,8 +4,10 @@ import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
-import com.example.projetoac1.DtoPlace.DtoPlace;
-import com.example.projetoac1.DtoPlace.DtoPlaceInser;
+
+import com.example.projetoac1.DtoPlace.PlaceDto;
+import com.example.projetoac1.DtoPlace.PlaceInsertDto;
+import com.example.projetoac1.DtoPlace.PlaceUpdateDto;
 import com.example.projetoac1.entities.PlaceEntity;
 import com.example.projetoac1.repositorio.PlaceRepository;
 
@@ -19,51 +21,52 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class PlaceService {
+     //fazer o getPlaceByCodigo || getallPlace|| insert Place||apagar Place||atualizar Place|| salvar Place
 
-    @Autowired
-    private PlaceRepository repository;
-
-    public Page<DtoPlace> getAll(PageRequest pageRequest, String name, String adress)
-    {
-
-        Page <PlaceEntity> list = repository.find(pageRequest,name,adress);
-        return list.map(c -> new DtoPlace(c));
-
-    } 
-
-    public DtoPlace getPlaceById(long id){
-
-        Optional <PlaceEntity> op = repository.findById(id);
-        PlaceEntity place = op.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Cliente não encontrado no sistema!!!"));
-
-        return new DtoPlace(place);
-    } 
-
-    public DtoPlace insert(DtoPlaceInser insertDto){
+     @Autowired
+     private PlaceRepository RepositoryPlace;
+     
+     public Page<PlaceDto> getPlace(PageRequest pageRequest, String name, String address)
+     {
+         
+         Page<PlaceEntity> list = RepositoryPlace.find(pageRequest,name,address);
+         return list.map( pl -> new PlaceDto(pl));
+     }
+     
+     public PlaceDto getPlaceById(Long id){
+ 
+        Optional<PlaceEntity> op = RepositoryPlace.findById(id);
+        PlaceEntity place = op.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Place not found"));
+ 
+        return new PlaceDto(place);
+     }
+ 
+     public PlaceDto insert(PlaceInsertDto insertDto) {
 
         PlaceEntity place = new PlaceEntity(insertDto);
-        place = repository.save(place);
-        return new DtoPlace(place);
-    }
-
-    public void deleteId(Long id){
+        place = RepositoryPlace.save(place);
+        return new PlaceDto(place);
+     }
+     public PlaceDto update(Long id, PlaceUpdateDto updateDto){
+       
         try{
-            repository.deleteById(id);
-        }
-        catch(EmptyResultDataAccessException e)  {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"ID já apagado ou não encontrado");
-        }
-    }
+            PlaceEntity PlaceEntity = RepositoryPlace.getOne(id);
 
-    public DtoPlace update(long id, DtoPlace updateDto)
-    {
-        try{
-            PlaceEntity place = repository.getOne(id);
-            place.setName(updateDto.getName());
-            place=repository.save(place);
-            return new DtoPlace(place);
-        }catch(EntityNotFoundException e){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"ID não encontrado no Sistema!!!");
+            PlaceEntity.setName(updateDto.getName());
+            PlaceEntity.setAddress(updateDto.getAddress());
+            PlaceEntity = RepositoryPlace.save(PlaceEntity);
+            return new PlaceDto(PlaceEntity);
         }
-    }
+         catch(EntityNotFoundException e){
+             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Place not found");
+         }
+     }
+     
+     public void remove(Long id){
+         try {
+             RepositoryPlace.deleteById(id);
+         } catch (EmptyResultDataAccessException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found");
+         }
+     }
 }

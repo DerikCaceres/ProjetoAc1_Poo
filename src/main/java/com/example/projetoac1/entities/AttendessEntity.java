@@ -4,7 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import com.example.projetoac1.dtoAttendess.DtoAttendessInsert;
+
+import com.example.projetoac1.dtoAttendess.attendessDtoInsert;
 
 
 @Entity
@@ -12,6 +13,8 @@ import com.example.projetoac1.dtoAttendess.DtoAttendessInsert;
 @Table(name="TB_ATTENDESS")
 public class AttendessEntity extends BaseUser{
 
+ //   @OneToMany //@OneToMany(cascade = CascadeType.ALL)  =
+  //  @JoinColumn(name="Balance")
     private double balance;
 
     
@@ -28,9 +31,10 @@ public class AttendessEntity extends BaseUser{
 
 
 
-    public AttendessEntity(DtoAttendessInsert insertDto) {
+    public AttendessEntity(attendessDtoInsert insertDto) {
         super(insertDto.getId(),insertDto.getName());
         this.balance = insertDto.getBalance();
+
     }
 
 

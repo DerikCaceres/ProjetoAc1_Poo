@@ -11,8 +11,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AttendessRepository extends JpaRepository <AttendessEntity,Long>{
-
-    @Query("SELECT c FROM AttendessEntity c ")
+    @Query("SELECT c FROM AttendessEntity c")
     Page<AttendessEntity> find(PageRequest pageRequest, String name);
-
 }

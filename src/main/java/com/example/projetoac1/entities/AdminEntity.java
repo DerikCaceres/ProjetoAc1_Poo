@@ -12,7 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import com.example.projetoac1.dtoAdm.DtoAdmInsert;
+import com.example.projetoac1.dtoAdm.AdminDtoInsert;
+
+
 
 
 @Entity
@@ -22,50 +24,55 @@ public class AdminEntity extends BaseUser{
 
  
 
-    @OneToMany(cascade = CascadeType.ALL)  
-    @JoinColumn(name="Adm_Id")
-    private List<Evento> eventList = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="ADMIN_ID")
+    private List<EventsCadastro> listaEventos = new ArrayList<>();
 
 
-    private String phone;
+    private String phoneNumber;
 
 
     public AdminEntity() {
     }
 
 
-    public AdminEntity(long id, String name, String email, List<Evento> eventList, String phone) {
-        super(id,name,email);
-        this.eventList = eventList;
-        this.phone = phone;
+    public AdminEntity(long id, String name, String email, List<EventsCadastro> listaEventos, String phoneNumber) {
+        super(id, name, email);
+        this.listaEventos = listaEventos;
+        this.phoneNumber = phoneNumber;
     }
 
 
-    public AdminEntity(DtoAdmInsert insertDto) {
+    public AdminEntity(AdminDtoInsert insertDto) {
         super(insertDto.getId(), insertDto.getName(), insertDto.getEmail());
-        this.phone = insertDto.getPhone();
-    }
-
-    public List<Evento> getEventList() {
-        return eventList;
+        this.phoneNumber = insertDto.getPhoneNumber();
     }
 
 
-    public void setEventList(List<Evento> eventList) {
-        this.eventList = eventList;
+    
+
+
+    public List<EventsCadastro> getListaEventos() {
+        return listaEventos;
     }
 
 
-    public String getPhone() {
-        return phone;
+    public void setListaEventos(List<EventsCadastro> listaEventos) {
+        this.listaEventos = listaEventos;
     }
 
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
- 
 
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+
+    
 
  
 
