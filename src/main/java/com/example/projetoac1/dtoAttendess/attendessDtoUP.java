@@ -13,8 +13,7 @@ public class attendessDtoUP {
     public void setBalance(long balance) {
         this.balance = balance;
     }
-
-    
+   
     
 }
 

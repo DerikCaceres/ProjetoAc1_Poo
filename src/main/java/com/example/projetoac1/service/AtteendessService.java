@@ -22,7 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class AtteendessService {
-    //fazer o getAttendessByCodigo || getallAttendess|| insert Attendess||apagar Attendess||atualizar Attendess|| salvar Attendess
+   
 
     @Autowired
     private AttendessRepository repository;

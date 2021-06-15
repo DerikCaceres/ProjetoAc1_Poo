@@ -48,9 +48,5 @@ public class TicketEntity {
     public void setAttendess(AttendessEntity attendess) {
         this.attendess = attendess;
     }
-
-
-
-    
-    
+      
 }

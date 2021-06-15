@@ -25,6 +25,4 @@ public class AdminDtoUp {
     public void setEmail(String email) {
         this.email = email;
     }
-
-   
 }

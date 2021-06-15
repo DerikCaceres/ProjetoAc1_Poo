@@ -19,7 +19,7 @@ import com.example.projetoac1.Dto.EventDtoInsert;
 
 
 @Entity
-@Table(name="TB_EVENTS")//quando o nome da tabela nao bate com a do banco de dados tenho que colocar @table 
+@Table(name="TB_EVENTS")
 public class EventsCadastro implements Serializable {
 
 
@@ -184,8 +184,6 @@ public class EventsCadastro implements Serializable {
     }
 
 
-
-
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -207,9 +205,5 @@ public class EventsCadastro implements Serializable {
             return false;
         return true;
     }
-
-
    
-
-    
 }

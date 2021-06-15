@@ -21,8 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class PlaceService {
-     //fazer o getPlaceByCodigo || getallPlace|| insert Place||apagar Place||atualizar Place|| salvar Place
-
+    
      @Autowired
      private PlaceRepository RepositoryPlace;
      
@@ -70,6 +69,5 @@ public class PlaceService {
          }
      }
      
-
      
 }

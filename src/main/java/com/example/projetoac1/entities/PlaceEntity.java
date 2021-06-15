@@ -78,11 +78,5 @@ public class PlaceEntity {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    
-
-
-   
-
     
 }

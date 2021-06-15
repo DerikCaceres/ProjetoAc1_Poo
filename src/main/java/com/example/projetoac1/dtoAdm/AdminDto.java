@@ -10,8 +10,7 @@ public class AdminDto {
     private String phoneNumber;
     private String email;
 
-
-    
+  
 
     public AdminDto() {
     }
@@ -22,17 +21,13 @@ public class AdminDto {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
-
-
     
     public AdminDto(AdminEntity admin) {
         this.id= admin.getId();
         this.name= admin.getName();
         this.phoneNumber = admin.getPhoneNumber();
         this.email= admin.getEmail();
-    }
-
-    
+    }   
 
     public AdminDto(AdminDto adm) {
         this.id = adm.getId();
@@ -69,8 +64,6 @@ public class AdminDto {
     }
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    
+    }   
     
 }

@@ -55,9 +55,6 @@ public class EventDtoUp{
     }
     public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
-    }
-    
-    
-
+    }      
 }
     

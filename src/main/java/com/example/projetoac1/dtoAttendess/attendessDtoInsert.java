@@ -24,9 +24,6 @@ public class attendessDtoInsert {
     }
     public void setBalance(long balance) {
         this.balance = balance;
-    }
-
-    
-    
+    }       
 }
 

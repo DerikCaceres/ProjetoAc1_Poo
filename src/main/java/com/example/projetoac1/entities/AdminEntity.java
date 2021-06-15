@@ -71,12 +71,5 @@ public class AdminEntity extends BaseUser{
         this.phoneNumber = phoneNumber;
     }
 
-
-    
-
- 
-
-
-
     
 }

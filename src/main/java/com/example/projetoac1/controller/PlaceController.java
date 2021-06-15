@@ -57,15 +57,12 @@ public class PlaceController {
       return ResponseEntity.ok().body(place);  
     }
 
-  
     @PostMapping
     public ResponseEntity<PlaceDto> insert(@RequestBody PlaceInsertDto insertDto){
         PlaceDto dto = placeService.insert(insertDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
-
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remove(@PathVariable long id){
@@ -77,8 +74,5 @@ public class PlaceController {
     public ResponseEntity<PlaceDto> Update(@RequestBody PlaceUpdateDto updateDto, @PathVariable Long id){
       PlaceDto dto = placeService.update(id,updateDto);
         return ResponseEntity.ok().body(dto);
-    }
-
-
-    
+    }   
 }

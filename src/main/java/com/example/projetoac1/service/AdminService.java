@@ -20,7 +20,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class AdminService {
-    //fazer o getAdmiByCodigo  feito|| getalladmin esta paginado  feito|| insert admin feito||apagar admin  feito||atualizar admin feito|| salvar admin
 
 
 
@@ -75,9 +74,5 @@ public class AdminService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"ID não encontrado no Sistema!!!");
         }
     }
-
-
-    // salvar admin tem que fazer ainda
- 
 
 }

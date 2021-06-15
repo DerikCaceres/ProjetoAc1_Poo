@@ -56,15 +56,12 @@ public class AttendessController {
       return ResponseEntity.ok().body(Attendess);  
     }
 
-  
     @PostMapping
     public ResponseEntity<attendessDto> insert(@RequestBody attendessDtoInsert insertDto){
       attendessDto dto = AttendessService.insert(insertDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
-
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remove(@PathVariable long id){
