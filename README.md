@@ -27,24 +27,32 @@ saida
     "email": "derikcml@hotmail.com"
 }
 
-places
+events
 {
-    "name": "Derik",
-    "adress": "rua sete"
-    
-}
+            "id": 1,
+            "name": "nereu",
+            "description": "aaaa",
+            "email": "nereu@hotmail.com",
+            "startDate": "2004-01-12",
+            "endDate": "2009-02-09",
+            "startTime": "04:00:00",
+            "endTime": "12:00:00"
+    }
 
-saida 
- erro
- 
- Event
- {
-    "name": "Derik",
-    "description": "legal",
-    "place": "brasil",
-    "startdate": "2021-05-23",
-    "enddate": "2021-06-23",
-    "starttime": "13:00", 
-    "endtime": "19:00",
-    "email": "derik@hotmail.com"  
+admins 
+  {
+    "id": 1,
+    "name": "nereu",
+    "phoneNumber": 15 974018866,
+    "email": "nereu@hotmail.com"
+}
+places
+    {
+    "adress":"rua barao de tatui, 15"
+    "name": "Casa de shows"
+}
+attendess
+    {
+    "email":"derik.maganhato@hotmail.com"
+    "name": "derik"
 }
